@@ -1,0 +1,13 @@
+
+#!/bin/sh
+
+artist=$(playerctl -p spotify metadata --format "{{ artist }}")
+title=$(playerctl -p spotify metadata --format "{{ title }}")
+output="$artist - $title"
+
+if [[ ${#output} -gt 32 ]]
+then 
+	echo "${output:0:29}..."
+else
+	echo $output
+fi

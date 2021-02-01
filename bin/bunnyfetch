@@ -1,0 +1,69 @@
+#!/bin/bash
+# Tiny colored fetch script
+# Requires Typicons Font to display the icons
+# elenapan @ github
+
+f=3 b=4
+for j in f b; do
+  for i in {0..7}; do
+    printf -v $j$i %b "\e[${!j}${i}m"
+  done
+done
+d=$'\e[1m'
+t=$'\e[0m'
+v=$'\e[7m'
+
+# Items
+sep=
+s=$d$f0$sep$t
+
+w=wifi
+wifiname="$(iwgetid | cut -d \" -f2)"
+
+h=wm
+wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+
+k=kern
+kernel="$(uname -r | cut -d '-' -f1)"
+
+r=res
+resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
+
+sh=sh
+shell=$(basename $SHELL)
+
+o=os
+os=arch
+
+# (\ /)
+# ( · ·)
+# c(")(")
+
+# (\ /)
+# ( . .)
+# c(")(")
+
+tput clear
+cat << EOF
+             
+   (\ /)     $f1$o  $t$os
+   ( $d. .$t)    $f2$h  $t$wmname
+   c($f1"$t)($f1"$t)   $f5$sh  $t$shell
+   
+EOF
+
+printf '    '
+
+for i in 0 1 2 3 4 5 6 7; do
+	printf '\033[48;5;%sm \033[m' "$i"
+	printf '\033[48;5;%sm \033[m' "$i"
+done
+
+printf '\n    '
+
+for i in 8 9 10 11 12 13 14 15; do
+	printf '\033[48;5;%sm \033[m' "$i"
+	printf '\033[48;5;%sm \033[m' "$i"
+done
+
+printf '\n\n'

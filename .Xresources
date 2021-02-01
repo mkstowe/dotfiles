@@ -1,0 +1,52 @@
+*.background:		#20282c	
+*.foreground:		#ebebeb
+*.cursor:		#ebebeb
+
+*.selection_foreground:	#20282c
+*.selection_background:	#2a7893
+
+! black
+*.color0:		#20282c
+*.color8:		#657878
+
+! red
+*.color1:		#e05652
+*.color9:		#db7a6d
+
+! green
+*.color2:		#8a9d79
+*.color10:		#b3d89c
+
+! yellow
+*.color3:		#fbba72
+*.color11:		#ffee88
+
+! blue
+*.color4:		#2a7893
+*.color12:		#7ca5b8
+
+! magenta
+*.color5:		#964664
+*.color13:		#b78f9c
+
+! cyan
+*.color6:		#187179
+*.color14:		#6da699
+
+! white
+*.color7:		#77928f
+*.color15:		#ebebeb
+
+
+
+#define rofi_bg 	#20282c
+#define rofi_fg 	#7ca5b8
+#define rofi_hl 	#ebebeb
+
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: rofi_bg,  rofi_fg,  rofi_bg,  rofi_bg,  rofi_hl
+rofi.color-urgent: rofi_bg,  rofi_fg,  rofi_bg,  rofi_bg,  rofi_hl
+rofi.color-active: rofi_bg,  rofi_fg,  rofi_bg,  rofi_bg,  rofi_hl
+
+!                  'background', 'border', 'separator'
+rofi.color-window: rofi_bg,       rofi_bg,  rofi_fg

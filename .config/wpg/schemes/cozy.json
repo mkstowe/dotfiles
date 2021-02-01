@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/michael/.config/wpg/wallpapers/wallpaper.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#282828",
+        "foreground": "#fbf1c7",
+        "cursor": "#fbf1c7"
+    },
+    "colors": {
+        "color0": "#20282c",
+        "color1": "#6e1d23",
+        "color2": "#535f49",
+        "color3": "#e9d58b",
+        "color4": "#074459",
+        "color5": "#877884",
+        "color6": "#187179",
+        "color7": "#ada9a1",
+        "color8": "#495e69",
+        "color9": "#db7a6d",
+        "color10": "#809a7b",
+        "color11": "#e3e2b0",
+        "color12": "#60a8bf",
+        "color13": "#9e8b9f",
+        "color14": "#6da699",
+        "color15": "#edeae5"
+    }
+}
