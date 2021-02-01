@@ -147,6 +147,16 @@ gc () {
 	git push
 }
 
+alias ds='yadm status'
+alias da='yadm add -u'
+alias dp='yadm push'
+
+dc () {
+	yadm add -u
+	yadm commit -m "$1"
+	yadm push
+}
+
 alias uu='sudo pacman -Syu'
 alias ls='ls -FSsh1 --color=auto'
 alias lsa='ls -a -FSsh1 --color=auto'
