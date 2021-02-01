@@ -128,8 +128,8 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias ez='sudo vim ~/.zshrc'
-alias ezsh='sudo vim ~/.zshrc'
+alias ez='sudo nvim ~/.zshrc'
+alias ezsh='sudo nvim ~/.zshrc'
 
 alias mc='make clean'
 alias po='poweroff'
@@ -180,7 +180,7 @@ alias sshnc='ssh mkstrnrc@server276.web-hosting.com -p21098'
 
 alias vim='nvim'
 alias vi='nvim'
-
+alias v='nvim'
 killport () {
 	if [[ $(lsof -i tcp:$1) ]]; then
 		lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill 
