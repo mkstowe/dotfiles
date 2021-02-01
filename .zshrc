@@ -148,8 +148,12 @@ gc () {
 }
 
 alias ds='yadm status'
-alias da='yadm add -u'
 alias dp='yadm push'
+
+da () {
+	yadm add $1
+	yadm add -u
+}
 
 dc () {
 	yadm add -u
