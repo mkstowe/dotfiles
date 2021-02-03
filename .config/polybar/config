@@ -5,8 +5,8 @@ offset-y = 1%
 radius = 0
 fixed-center = true
 
-foreground = #ebebeb
-background = #b78f9c
+foreground = #282a36
+background = #bd93f9
 
 line-size = 2
 
@@ -73,15 +73,15 @@ modules-center = date
 type = internal/i3
 
 ;label-unfocused-background = #20282c
-label-unfocused-foreground = #ebebeb
+label-unfocused-foreground = #f8f8f2
 
 label-mode = %mode%
 label-mode-padding = 2
 
 label-focused = %name%
-label-focused-foreground = #b78f9c
+label-focused-foreground = #bd93f9
 ;label-focused-background = #20282c
-label-focused-underline = #b78f9c
+label-focused-underline = #bd93f9
 label-focused-padding = 2
 
 label-unfocused = %index%
@@ -91,8 +91,8 @@ label-visible = %index%
 label-visible-padding = 4
 
 label-urgent = %index%
-label-urgent-foreground = #20282c
-label-urgent-background = #db7a6d
+label-urgent-foreground = #ff5555
+label-urgent-background = #282a36
 label-urgent-padding = 2
 
 
@@ -105,11 +105,11 @@ format-volume = <ramp-volume>  <label-volume>
 label-volume = %percentage%%
 label-muted =  muted
 
-format-foreground = #20282c
-label-foreground = #20282c
-label-volume-foreground = #20282c
-label-muted-foreground = #20282c
-ramp-volume-foreground = #20282c
+;format-foreground = #20282c
+;label-foreground = #20282c
+;label-volume-foreground = #20282c
+;label-muted-foreground = #20282c
+;ramp-volume-foreground = #20282c
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -127,7 +127,7 @@ time = "%a %b %d, %I:%M %p "
 
 time-alt = %H:%M
 
-format-foreground = #20282c
+;format-foreground = #20282c
 
 label = %date% %time%
 
@@ -149,7 +149,7 @@ exec = $HOME/.config/polybar/scripts/song 2>/dev/null || echo "[-]"
 
 format = "<label>"
 interval = 1
-format-foreground = #20282c
+;format-foreground = #20282c
 
 
 [module/prev]
@@ -157,7 +157,7 @@ type = custom/script
 exec = echo "%{T5}%{T-}" &
 
 format = "<label>"
-format-foreground = #20282c
+;format-foreground = #20282c
 
 interval = 600
 tail = true
@@ -171,7 +171,7 @@ exec = [[ "$(playerctl -p spotify status 2>/dev/null)" == "Playing" ]] && echo "
 
 interval = 0.1
 format = "<label>"
-format-foreground = #20282c
+;format-foreground = #20282c
 tail = true
 
 click-left = playerctl --player=spotify play-pause &
@@ -182,7 +182,7 @@ type = custom/script
 exec = echo "%{T5}%{T-}" &
 
 format = "<label>"
-format-foreground = #20282c
+;format-foreground = #20282c
 
 interval = 600
 tail = true

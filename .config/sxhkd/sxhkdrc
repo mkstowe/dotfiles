@@ -23,6 +23,9 @@ super + shift + j
 super + shift + u
 	unityhub
 
+super + shift + t 
+	steam
+
 
 # Audio
 XF86AudioMute
