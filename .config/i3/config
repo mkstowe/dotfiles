@@ -160,6 +160,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 ########## Startup applications ##########
 
+exec_always --no-startup-id sxhkd &
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # exec_always feh --bg-center ~/dotfiles/wallpaper.*
 exec_always --no-startup-id hsetroot -solid "#20282c"
@@ -187,7 +188,7 @@ bindsym $mod+q kill
 bindsym $mod+f exec firefox
 
 # Open rofi
-bindsym $mod+d exec rofi -show run -lines 4 -eh 1 -width 100 -padding 650 -opacity "85" -bw 0 -font "$main-font 24" -line-padding 20 -hide-scrollbar 
+bindsym $mod+d exec rofi -show run # -lines 4 -eh 1 -width 100 -padding 650 -opacity "85" -bw 0 -font "$main-font 24" -line-padding 20 -hide-scrollbar 
 
 ########## Aesthetics ##########
 

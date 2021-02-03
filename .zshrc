@@ -133,6 +133,7 @@ alias ezsh='sudo nvim ~/.zshrc'
 
 alias mc='make clean'
 alias po='poweroff'
+alias reboot='systemctl reboot'
 alias sus='betterlockscreen -s'
 alias sudo='sudo '
 

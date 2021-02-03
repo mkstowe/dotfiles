@@ -1,0 +1,54 @@
+# Launch programs
+super + Return
+	kitty
+
+super + shift + Return
+	kitty -e ranger
+
+super + d
+	rofi -show run
+
+super + shift + f
+	firefox
+
+super + shift + d
+	lightcord
+
+super + shift + s
+	spotify
+
+super + shift + j
+	jetbrains-toolbox
+
+super + shift + u
+	unityhub
+
+
+# Audio
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    pactl set-sink-mute 0 false ; pactl set-sink-volume 0 {-,+}5%
+
+
+# Power
+super + shift + Escape
+	systemctl poweroff
+
+super + ctrl + Escape
+	systemctl reboot
+
+
+# Reload sxhkd
+super + shift + BackSpace
+	systemctl --user restart sxhkd
+
+
+# Screenshot region
+super + shift + p
+	import ~/Pictures/screenshots/$(date +'%Y-%m-%d-%H-%M-%S').png
+
+# Screenshot whole display
+super + p
+	import -window root ~/Pictures/screenshots/$(date +'%Y-%m-%d-%H-%M-%S').png

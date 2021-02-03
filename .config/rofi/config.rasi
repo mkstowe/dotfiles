@@ -1,0 +1,16 @@
+configuration {
+	font: "Courier Prime 24";
+	lines: 4;
+	eh: 1;
+	width: 100;
+	padding: 650;
+	opacity: "85";
+	bw: 0;
+	line-padding: 20;
+	hide-scrollbar: true;
+
+	color-normal: "#20282c, #7ca5b8, #20282c, #20282c, #ebebeb";
+	color-urgent: "#20282c, #7ca5b8, #20282c, #20282c, #ebebeb";
+	color-active: "#20282c, #7ca5b8, #20282c, #20282c, #ebebeb";
+	color-window: "#20282c, #20282c, #7ca5b8";
+}
