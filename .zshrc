@@ -83,20 +83,52 @@ prompt pure
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	archlinux
-	autojump
-	colored-man-pages
-	command-not-found
-	copyfile
-	extract
-	history-substring-search
-	safe-paste
-	pip
-	you-should-use
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
+
+source ~/.zplug/init.zsh
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "MichaelAquilina/zsh-you-should-use"
+
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/cp", from:oh-my-zsh
+zplug "plugins/man", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/archlinux", from:oh-my-zsh
+zplug "plugins/autojump", from:oh-my-zsh
+zplug "plugins/copyfile", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/safe-paste", from:oh-my-zsh
+
+# zplug "dracula/zsh", as:theme
+
+#plugins=(
+	#archlinux
+	#autojump
+	#colored-man-pages
+	#command-not-found
+	#copyfile
+	#extract
+	#history-substring-search
+	#safe-paste
+	#pip
+	#you-should-use
+	#zsh-autosuggestions
+	#zsh-syntax-highlighting
+#)
+
+if ! zplug check --verbose; then
+	printf "Install? [y/N]: "
+	if read -q; then
+		echo; zplug install
+	fi
+fi
+
+zplug load
 
 source $ZSH/oh-my-zsh.sh
 
@@ -152,8 +184,13 @@ alias ds='yadm status'
 alias dp='yadm push'
 
 da () {
-	yadm add $1
-	yadm add -u
+	if [ -n "$1" ]; then
+		yadm add $1
+		echo "Added $1"
+	else
+		yadm add -u
+		echo "Added untracked files"
+	fi
 }
 
 dc () {
@@ -179,7 +216,7 @@ alias loadX='xrdb ~/.Xresources'
 
 alias nf='neofetch'
 alias fortune=cat='clear && fortune -s | python /home/michael/.local/bin/fortune-cat -p 1 -mtl 35'
-alias bun='~/dotfiles/bunnyfetch'
+alias bun='~/bin/bunnyfetch'
 
 alias sshnc='ssh mkstrnrc@server276.web-hosting.com -p21098'
 

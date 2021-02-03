@@ -15,6 +15,8 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdcommenter'
 
+Plug 'dracula/vim',{'as':'dracula'}
+
 " c
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
@@ -39,6 +41,12 @@ call plug#end()
 
 filetype plugin indent on
 
+
+" --- Theme ---
+set background=dark
+colorscheme dracula
+set termguicolors
+
 " --- NERDTree ---
 let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode=2
@@ -58,7 +66,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#ale#enabled=1
 let g:airline_skip_empty_sections=1
-let g:airline_theme='bubblegum'
+"let g:airline_theme='bubblegum'
 
 " --- SilverSearcher ---
 let g:ackprg='ag --vimgrep'
