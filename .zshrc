@@ -224,6 +224,8 @@ alias sshnc='ssh mkstrnrc@server276.web-hosting.com -p21098'
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
+alias z='zathura'
+
 killport () {
 	if [[ $(lsof -i tcp:$1) ]]; then
 		lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill 
