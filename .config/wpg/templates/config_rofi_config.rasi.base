@@ -1,0 +1,16 @@
+configuration {{
+	font: "{font1} 24";
+	lines: 4;
+	eh: 1;
+	width: 100;
+	padding: 650;
+	opacity: "85";
+	bw: 0;
+	line-padding: 20;
+	hide-scrollbar: true;
+
+	color-normal: "{background}, {color6}, {background}, {background}, {foreground}";
+	color-urgent: "{background}, {color6}, {background}, {background}, {foreground}";
+	color-active: "{background}, {color6}, {background}, {background}, {foreground}";
+	color-window: "{background}, {background}, {color6}";
+}}

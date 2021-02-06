@@ -115,21 +115,20 @@ set foldlevel=99
 nnoremap <space> za
 
 " --- Indents ---
-" python
-au BufNewFile,BufRead *.py
-	\ set tabstop=4
-	\ set softtabstop=4
-	\ set shiftwidth=4
-	\ set textwidth=79
-	\ set expandtab
-	\ set autoindent
-	\ set fileformat=unix
+" default
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
 
 " web
-au BufNewFile,BufRead *.js, *.html, *.css
-	\ set tabstop=2
-	\ set softtabstop=2
-	\ set shiftwidth=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 tw=79 expandtab
+autocmd Filetype css setlocal ts=2 sts=2 sw=2 tw=79 expandtab
+autocmd Filetype js setlocal ts=2 sts=2 sw=2 tw=79 expandtab
+
+" python
+autocmd Filetype python setlocal ts=4 sts=4 sw=4 tw=79 expandtab
 
 " --- Search ---
 set hlsearch

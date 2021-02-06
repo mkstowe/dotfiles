@@ -200,8 +200,9 @@ dc () {
 }
 
 alias uu='sudo pacman -Syu'
-alias ls='ls -FSsh1 --color=auto'
-alias lsa='ls -a -FSsh1 --color=auto'
+alias ls='ls -Fsh1 --color=auto'
+alias lsa='ls -AFsh1 --color=auto'
+alias lsl='ls -AFosh1 --color=auto'
 alias showip='hostname -I'
 
 alias venv='source env/bin/activate'

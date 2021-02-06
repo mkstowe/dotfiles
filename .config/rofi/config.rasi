@@ -9,8 +9,8 @@ configuration {
 	line-padding: 20;
 	hide-scrollbar: true;
 
-	color-normal: "#282a36, #6272a4, #282a36, #282a36, #f8f8f2";
-	color-urgent: "#282a36, #6272a4, #282a36, #282a36, #f8f8f2";
-	color-active: "#282a36, #6272a4, #282a36, #282a36, #f8f8f2";
-	color-window: "#282a36, #282a36, #6272a4";
+	color-normal: "#1c2023, #90d2d0, #1c2023, #1c2023, #f3f4f5";
+	color-urgent: "#1c2023, #90d2d0, #1c2023, #1c2023, #f3f4f5";
+	color-active: "#1c2023, #90d2d0, #1c2023, #1c2023, #f3f4f5";
+	color-window: "#1c2023, #1c2023, #90d2d0";
 }

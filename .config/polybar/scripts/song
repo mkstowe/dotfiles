@@ -5,9 +5,9 @@ artist=$(playerctl -p spotify metadata --format "{{ artist }}")
 title=$(playerctl -p spotify metadata --format "{{ title }}")
 output="$artist - $title"
 
-if [[ ${#output} -gt 32 ]]
+if [[ ${#output} -gt 45 ]]
 then 
-	echo "${output:0:29}..."
+	echo "${output:0:42}..."
 else
 	echo $output
 fi
