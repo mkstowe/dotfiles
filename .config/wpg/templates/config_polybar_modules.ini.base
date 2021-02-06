@@ -1,37 +1,23 @@
-[bar/top]
-width = 100%
-height = 32
-bottom = false
-fixed-center = true
-wm-restack=bspwm
-line-size = 3
-font-0 = "Courier Prime:style=Regular:pixelsize=10;5"
-font-1 = "Iosevka Nerd Font:pixelsize=13;5"
-enable-ipc = true
-modules-left = prev toggle next spotify
-modules-center = bspwm
-modules-right = volume date powermenu
-background = #00000000
-foreground = #f3f4f5
-
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = true
 enable-click = true
 fuzzy-match = true
 enable-scroll = false
-label-focused = 
-label-focused-foreground = #f3f4f5
+label-focused = %{{T2}}%{{T-}}
+label-focused-foreground = {color1}
 label-focused-padding = 1
-label-occupied = 
-label-occupied-foreground = #f3f4f5
+label-occupied = %{{T3}}%{{T-}}
+label-occupied-foreground = {foreground}
 label-occupied-padding = 1
-label-urgent = 
-label-urgent-foreground = #d29090
+label-urgent = %{{T3}}%{{T-}}
+label-urgent-foreground = {color1}
 label-urgent-padding = 1
-label-empty = 
-label-empty-foreground = #747c84
+label-empty = %{{T3}}%{{T-}}
+label-empty-foreground = {color8}
 label-empty-padding = 1
+format-background = {background}
+
 
 [module/spotify]
 type = custom/script
@@ -39,15 +25,19 @@ exec = ~/.config/polybar/scripts/song 2>/dev/null || echo "[-]"
 format = "<label>"
 format-padding = 1
 interval = 1
+format-background = {background}
+
 
 [module/prev]
 type = custom/script
-exec = echo "%{T5}%{T-}" &
+exec = echo "%{{T5}}%{{T-}}" &
 format = "<label>"
 format-padding = 2
 interval = 600
-tail = true
+tail = truei
+format-background = {background}
 click-left = playerctl --player=spotify previous &
+
 
 [module/toggle]
 type = custom/script
@@ -55,16 +45,20 @@ exec = [[ "$(playerctl -p spotify status 2>/dev/null)" == "Playing" ]] && echo "
 interval = 0.1
 format = "<label>"
 tail = true
+format-background = {background}
 click-left = playerctl --player=spotify play-pause &
+
 
 [module/next]
 type = custom/script
-exec = echo "%{T5}%{T-}" &
+exec = echo "%{{T5}}%{{T-}}" &
 format = "<label>"
 format-padding = 2
 interval = 600
 tail = true
+format-background = {background}
 click-left = playerctl --player=spotify next &
+
 
 [module/menu]
 type = custom/text
@@ -75,25 +69,31 @@ content-foreground = #FFF
 content-font = 2
 click-left = ~/.config/polybar/scripts/menu
 
+
 [module/volume]
 type = internal/pulseaudio
 use-ui-max = false
-format-volume = <ramp-volume>  <label-volume>
+format-volume = <ramp-volume> <label-volume>
 label-padding = 20
 label-volume = %percentage%%
-label-muted = "婢"
+label-muted = "%{{T1}}%{{T-}}"
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
+format-background = {background}
+format-volume-background = {background}
+format-muted-background = {background}
+label-background = {background}
+
 
 [module/date]
 type = internal/date
 interval = 5
 label = %time%
-label-padding = 1
-label-padding-left = 2
-label-font = 0
-time = %a, %b %d  |  %I:%M %p
+time = "%a, %b %d  |  %I:%M %p"
+format-background = {color1}
+format-foreground = {background}
+
 
 [module/powermenu]
 type = custom/text
@@ -102,3 +102,35 @@ content-padding = 2
 content-font = 2
 click-left = ~/.config/polybar/scripts/sysmenu
 click-right = ~/.config/polybar/scripts/sysmenu
+
+
+[module/separator-0-l]
+type = custom/text
+content = 
+content-foreground = {color0}
+content-background = {transparent}
+
+[module/separator-0-r]
+type = custom/text
+content = 
+content-foreground = {color0}
+content-background = {transparent}
+
+
+[module/separator-1-l]
+type = custom/text
+content = 
+content-foreground = {color1}
+content-background = {transparent}
+
+[module/separator-1-r]
+type = custom/text
+content = 
+content-foreground = {color1}
+content-background = {transparent}
+
+[module/separator-trans]
+type = custom/text
+content = 
+content-foreground = {transparent}
+content-background = {transparent}

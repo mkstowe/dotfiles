@@ -81,20 +81,20 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#90d2d0"
-foreground = "#1c2023"
-frame_color = "#1c2023"
+background = "#DCBDC0"
+foreground = "#1d2329"
+frame_color = "#1d2329"
 timeout = 5
 # icon = /home/michael/.config/dunst/normal.png
 
 [urgency_normal]
-background = "#90d2d0"
-foreground = "#1c2023"
-frame_color = "#1c2023"
+background = "#DCBDC0"
+foreground = "#1d2329"
+frame_color = "#1d2329"
 timeout = 5
 
 [urgency_critical]
-background = "#d29090"
-foreground = "#1c2023"
-frame_color = "#1c2023"
+background = "#B97787"
+foreground = "#1d2329"
+frame_color = "#1d2329"
 timeout = 5

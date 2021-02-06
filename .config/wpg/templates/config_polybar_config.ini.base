@@ -1,0 +1,27 @@
+include-file = ~/.config/polybar/modules.ini
+
+[bar/top]
+override-redirect = true
+wm-restack = bspwm
+
+width = 98%
+height = 30
+bottom = false
+fixed-center = true
+line-size = 3
+
+font-0 = "{font2}:style=Regular:pixelsize=10;2"
+font-1 = "Font Awesome 5 Free Solid:style=solid:size=11;2"
+font-2 = "Font Awesome 5 Free:style=regular:size=11;2"
+font-3 = "JetBrainsMono Nerd Font:style=Bold:size=18;5"
+
+modules-left = separator-0-l prev toggle next spotify separator-0-r
+modules-center = separator-0-l bspwm separator-0-r 
+modules-right = separator-0-l volume separator-0-r separator-trans separator-1-l date separator-1-r 
+
+background = {transparent} 
+foreground = {foreground}
+
+module-margin = 0
+offset-x = 1%
+offset-y = 3px

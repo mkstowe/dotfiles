@@ -44,8 +44,8 @@ filetype plugin indent on
 
 " --- Theme ---
 set background=dark
-colorscheme dracula
 set termguicolors
+set notermguicolors t_Co=16
 
 " --- NERDTree ---
 let g:NERDTreeShowHidden=1
@@ -66,7 +66,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#ale#enabled=1
 let g:airline_skip_empty_sections=1
-"let g:airline_theme='bubblegum'
+let g:airline_theme='bubblegum'
 
 " --- SilverSearcher ---
 let g:ackprg='ag --vimgrep'
