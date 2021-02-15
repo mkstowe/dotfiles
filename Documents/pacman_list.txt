@@ -23,6 +23,7 @@ patch
 picom-ibhagwan-git
 playerctl
 polybar
+silver-searcher-git
 spicetify-cli
 spotify
 ttf-courier-prime
@@ -72,4 +73,5 @@ xorg-xwd
 xorg-xwud
 yadm
 yay-git
+zathura
 zsh
