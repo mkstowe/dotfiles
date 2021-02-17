@@ -41,7 +41,8 @@ zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/copyfile", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/safe-paste", from:oh-my-zsh
-
+#zplug "plugins/virtualenv", from:oh-my-zsh
+zplug "plugis/virtualenvwrapper", from:oh-my-zsh
 
 if ! zplug check --verbose; then
 	printf "Install? [y/N]: "
@@ -57,6 +58,12 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(fasd --init auto)"
+
+
+export PATH=$PATH:$HOME/.local/bin
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+source $HOME/.local/bin/virtualenvwrapper.sh
 
 
 alias ez='sudo nvim ~/.zshrc'

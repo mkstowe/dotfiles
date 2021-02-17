@@ -3,7 +3,7 @@
 
 monitor = 0
 follow = keyboard
-geometry = "0x0-29+45"
+geometry = "300x0-29+45"
 indicate_hidden = yes
 shrink = yes
 transparency = 0
