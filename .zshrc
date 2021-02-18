@@ -42,7 +42,8 @@ zplug "plugins/copyfile", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/safe-paste", from:oh-my-zsh
 #zplug "plugins/virtualenv", from:oh-my-zsh
-zplug "plugis/virtualenvwrapper", from:oh-my-zsh
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh
+
 
 if ! zplug check --verbose; then
 	printf "Install? [y/N]: "
