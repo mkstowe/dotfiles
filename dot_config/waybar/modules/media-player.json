@@ -1,0 +1,15 @@
+{
+    "custom/media-player": {
+        "format": "{}",
+        "return-type": "json",
+        "max-length": 70,
+        "exec": "~/.config/waybar/scripts/playerctl.sh 2> /dev/null",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        //"on-click-backward": "playerctl previous",
+        //"on-click-forward": "playerctl next",
+        "on-scroll-up": "playerctl position 3+",
+        "on-scroll-down": "playerctl position 3-"
+    }
+}

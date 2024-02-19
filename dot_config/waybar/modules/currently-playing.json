@@ -1,0 +1,8 @@
+{
+    "custom/currently-playing": {
+        "exec": "~/.config/waybar/scripts/currently-playing.sh",
+        "interval": 5,
+        "format": "{}",
+        "max-length": 25
+    }
+}

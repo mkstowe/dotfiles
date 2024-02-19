@@ -1,0 +1,6 @@
+{
+    "custom/media-prev": {
+        "format": "󰒮",
+        "on-click": "playerctl previous"
+    }
+}

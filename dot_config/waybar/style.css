@@ -1,0 +1,46 @@
+@import '/home/mkstowe/.cache/wal/colors-waybar.css';
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaCove Nerd Font";
+    font-weight: bold;
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: none;
+    color: @foreground;
+}
+
+tooltip {
+    background: @background;
+    border-radius: 10px;
+    border: 2px solid @foreground;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: @foreground;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: @color4;
+}
+
+#workspaces button.urgent {
+    color: @color1;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    box-shadow: none;
+}
+
+#custom-media-player.paused {
+    transition: all 150ms ease-in-out;
+    opacity: 0.4;
+}

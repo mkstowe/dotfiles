@@ -1,0 +1,12 @@
+{
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    }
+}

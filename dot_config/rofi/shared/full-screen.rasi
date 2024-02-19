@@ -1,0 +1,6 @@
+@import "settings.rasi"
+
+window {
+  width: 100%;
+  height: 100%;
+}

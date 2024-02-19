@@ -1,0 +1,20 @@
+{
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  󰝟  ",
+        "format-icons": ["", "", "󰕾"],
+        "format-high": "󰕾 {volume}%",
+        "format-medium": "󰖀 {volume}%",
+        "format-low": "󰕿 {volume}%",
+        "scroll-step": 5,
+        "tooltip": false,
+        "states": {
+            "high": 85,
+            "medium": 50,
+            "low": 30,
+            "muted": 0
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    }
+}

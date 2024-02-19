@@ -1,0 +1,28 @@
+{
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": false,
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": "",
+        },
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": ["DP-2"],
+            "2": ["DP-2"],
+            "3": ["DP-2"],
+            "4": ["DP-2"],
+            "5": ["DP-2"],
+            "6": ["DP-2"],
+            "7": ["DP-2"],
+            "8": ["DP-2"],
+            "9": ["DP-2"],
+            "10": ["DP-2"],
+            "11": ["HDMI-A-1"],
+            "12": ["HDMI-A-1"],
+            "13": ["HDMI-A-1"]
+        }
+    }
+}

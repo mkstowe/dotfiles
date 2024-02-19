@@ -1,0 +1,41 @@
+[
+    {
+        "output": "DP-2",
+        "position": "top",
+        "include": [
+            "~/.config/waybar/defaults.json"
+        ],
+        "height": 50,
+        "spacing": 10,
+        "margin": "10 50",
+        "modules-left": [
+            "custom/media-player"
+        ],
+        "modules-center": [
+            "hyprland/workspaces"
+        ],
+        "modules-right": [
+            "clock"
+        ]
+    },
+    {
+        "output": "HDMI-A-1",
+        "position": "top",
+        "include": [
+            "~/.config/waybar/defaults.json"
+        ],
+        "height": 50,
+        "spacing": 30,
+        "margin": "10 50",
+        "modules-left": [
+            "custom/weather"
+        ],
+        "modules-center": [
+            "hyprland/workspaces"
+        ],
+        "modules-right": [
+            "bluetooth",
+            "wireplumber"
+        ]
+    }
+]

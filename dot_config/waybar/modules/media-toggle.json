@@ -1,0 +1,10 @@
+{
+    "custom/media-toggle": {
+        "exec": "~/.config/waybar/scripts/play-pause.sh",
+        "exec-on-event": true,
+        "interval": 1,
+        "format": "{}",
+        "tooltip": false,
+        "on-click": "playerctl play-pause"
+    }
+}

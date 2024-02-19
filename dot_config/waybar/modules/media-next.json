@@ -1,0 +1,6 @@
+{
+    "custom/media-next": {
+        "format": "󰒭",
+        "on-click": "playerctl next"
+    }
+}

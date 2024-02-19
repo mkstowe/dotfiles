@@ -1,0 +1,16 @@
+{
+    "include": [
+        "~/.config/waybar/modules/workspaces.json",
+        "~/.cache/wal/waybar-clock.json",
+        "~/.config/waybar/modules/currently-playing.json",
+        "~/.config/waybar/modules/media-player.json",
+        "~/.config/waybar/modules/volume.json",
+        "~/.config/waybar/modules/weather.json",
+        "~/.config/waybar/modules/media-next.json",
+        "~/.config/waybar/modules/media-prev.json",
+        "~/.config/waybar/modules/media-toggle.json",
+        "~/.config/waybar/modules/mpris.json",
+        "~/.config/waybar/modules/bluetooth.json",
+    ],
+    "layer": "top",
+}
