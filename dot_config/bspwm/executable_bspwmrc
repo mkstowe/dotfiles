@@ -1,0 +1,57 @@
+
+bspc monitor DP-2 -d 4 5 6 7 8 9 10
+bspc monitor HDMI-0 -d 1 2 3
+
+xrandr --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right --output DP-0 --off --output DP-1 --off --output DP-2 --primary --mode 3840x1600 --pos 1080x0 --rotate normal --output DP-3 --off --output DP-4 --off --output DP-5 --off
+
+# bspc rule -a firefox desktop='^4'
+bspc rule -a lightcord desktop='^2'
+bspc rule -a discord desktop='^2'
+bspc rule -a Slack desktop='^3'
+bspc rule -a Spotify desktop='^1'
+bspc rule -a Gimp desktop='^8'
+bspc rule -a "Code - Insiders" desktop='^5'
+
+# bspc config external_rules_command "$HOME/.config/bspwm/bspwm-external-rules"
+
+bspc config border_width	0
+bspc config window_gap		32
+bspc config top_padding		24
+
+
+bspc config automatic_scheme alternate
+
+bspc config split_ratio		0.5
+bspc config borderless_monocle	true
+bspc config gapless_monocle	true
+
+bspc config focus_follows_pointer	true
+
+wal -f ~/.config/wal/colorschemes/dark/catppuccin_mocha.json
+
+# Handle colors
+# shellcheck source=~/.cache/wal/colors.sh
+. "${HOME}/.cache/wal/colors.sh"
+
+bspc config normal_border_color "$color0"
+bspc config active_border_color "$color8"
+bspc config focused_border_color "$color8"
+
+xsetroot -cursor_name left_ptr
+# xset s 3600
+
+pkill sxhkd
+sxhkd &
+
+picom &
+pkill polybar
+~/.config/polybar/launch.sh
+
+killall dunst
+dunst -conf ~/.cache/wal/dunstrc > /dev/null 2>&1 &
+
+# feh --bg-fill ~/Pictures/wallpapers/coffee_cat_landscape.png --bg-fill ~/Pictures/wallpapers/coffee_portrait.png
+feh --bg-tile ~/Pictures/wallpapers/tile_x.png
+
+# killall borders.sh
+# ~/.config/bspwm/scripts/borders.sh

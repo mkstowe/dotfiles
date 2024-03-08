@@ -1,0 +1,6 @@
+#!/bin/python3
+import subprocess
+
+vol = subprocess.check_output("wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}'", shell=True)
+print(((round(float(vol) * 100))))
+

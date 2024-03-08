@@ -1,0 +1,348 @@
+;; Variables
+
+(deflisten current_workspace "~/.config/eww/bar/scripts/get-active-workspace")
+(deflisten workspaces :initial "[]" "~/.config/eww/bar/scripts/get-workspaces")
+(deflisten workspaces_2 :initial "[]" "~/.config/eww/bar/scripts/get-workspaces-2")
+
+(defpoll date :interval "1s" `date '+%A, %B %d'`)
+(defpoll time :interval "1s" `date '+%I:%M %P'`)
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_month :interval "20h" "date '+%M")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+(defvar calendar_reveal false)
+(defvar bluetooth_reveal false)
+
+(defvar volume_reveal false)
+(defpoll volume :interval "100ms" "~/.config/eww/bar/scripts/volume")
+(defpoll volume_icon :interval "500ms" "~/.config/eww/bar/scripts/volume-icon")
+(defpoll volume_muted :interval "500ms" "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'")
+
+(defvar music_reveal false)
+(defpoll player_status :interval "1s" "playerctl status")
+(defpoll current_track :interval "1s" "~/.config/eww/bar/scripts/current-track")
+(defpoll current_artist :interval "1s" "~/.config/eww/bar/scripts/current-artist")
+(defpoll song-cover-art :interval "1s" "~/.config/eww/bar/scripts/get-cover-art")
+(deflisten song_position "playerctl --follow metadata --player playerctld --format '{{duration(position)}}'")
+(deflisten song_length "playerctl --follow metadata --player playerctld --format '{{duration(mpris:length))}}'")
+
+(defpoll mem_percent :interval "5s" "~/.config/eww/bar/scripts/memory")
+(defpoll current_weather :interval "5m" "~/.config/eww/bar/scripts/weather")
+
+
+;; 
+;; Main Bar
+;;
+
+(defwindow main-bar
+  :monitor 1
+  :geometry	(geometry
+    :x "0%"
+    :y "15px"
+    :width "99%"
+    :height "50px"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :exclusive "true"
+  :windowtype "dock"
+  :class "main-bar"
+  (bar-1)
+)
+
+(defwidget bar-1 []
+  (box
+    :class "bar-class"
+    :orientation "h"
+    (left-1)
+    (center-1)
+    (right-1)
+  )
+)
+
+(defwidget left-1 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :class "left-modules"
+    (music)
+  )
+)
+
+(defwidget center-1 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :class "center-modules"
+    (workspaces-1)
+  )
+)
+
+(defwidget right-1 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "end"
+    :class "right-modules"
+    (memory)
+    (datetime)
+  )
+)
+
+(defwidget workspaces-1 []
+  (eventbox
+    :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+    :class "workspaces-widget"
+    (box
+      :space-evenly true
+      (label
+        :text "${workspaces}${current_workspace}"
+      :visible false)
+      (for workspace in workspaces
+        (eventbox
+          :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box
+            :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.windows > 0 || workspace.id == current_workspace ? "" : ""}")
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget music []
+  (box
+    :class "music"
+    :space-evenly "false"
+    (eventbox :cursor "pointer"
+    (button
+      :onclick "playerctl play-pause"
+      :class "cover-art"
+      :style "background-image: url('${song-cover-art}');")
+    )
+    (eventbox
+      :class "song"
+      :wrap "true"
+      :cursor "pointer"
+      :onclick "eww update music_reveal=${!music_reveal}"
+      ; :onclick "eww open --toggle music-window"
+      (label :text "${current_artist} - ${current_track}")
+    )
+  )
+)
+
+(defwindow music-window
+  :monitor 1
+  :focusable "false"
+  :geometry (geometry
+    :x "25px"
+    :y "10px"
+    :anchor "top left"
+    :width "450px"
+    :height "200px"
+  )
+  (music-window-widget)
+)
+
+(defwidget music-window-widget []
+  ; (revealer
+  ;   :transition "none"
+  ;   :reveal music_reveal
+  ;   :duration "150ms"
+    (box
+      :class "music-wrapper"
+      :orientation "h"
+      :space-evenly "false"
+      (box
+        :class "cover-art"
+        :style "background-image: url('${song-cover-art}')"
+      )
+      (box
+        :class "song-info"
+        :orientation "v"
+        :spacing 20
+        :space-evenly "false"
+        :width 300
+        (label :halign "center" :class "artist" :wrap "true" :justify "center" :text "${current_artist}")
+        (label :halign "center" :hexpand "true" :class "song" :wrap "true" :justify "center" :text "${current_track}")
+        (box
+          :class "controls"
+          :orientation "h"
+          (box)
+          (eventbox :cursor "pointer"
+            (button :class "prev" :onclick "playerctl next" "")
+          )
+          (eventbox :cursor "pointer"
+            (button :class "play" :onclick "playerctl play-pause" "${player_status=='Playing' ? ' ' : ''}")
+          )
+          (eventbox :cursor "pointer"
+            (button :class "next" :onclick "playerctl previous" "")
+          )
+          (box)
+        )
+      ; )
+    )
+  )
+)
+
+(defwidget datetime []
+  (eventbox
+    :class "datetime"
+    :onclick "eww update calendar_reveal=${!calendar_reveal}"
+    :cursor "pointer"
+    (box
+      :space-evenly "false"
+      (label :class "date" :text "${date}")
+      (label :class "separator" :text "|")
+      (label :class "time" :text "${time}")
+    )
+  )
+)
+
+(defwindow calendar-window
+  :monitor 1
+  :geometry (geometry
+    :x "25px"
+    :y "10px"
+    :anchor "top right"
+    :width "300px"
+    :height "60px"
+  )
+  (cal)
+)
+
+(defwidget cal []
+  (revealer
+    :transition "crossfade"
+    :reveal calendar_reveal
+    :duration "150ms"
+    (box
+      :class "calendar-wrapper"
+      :orientation "v"
+      (box
+        (calendar
+          :class "calendar"
+          :day calendar_day
+          :year calendar_year
+          :month calendar_month
+        )
+      )
+    )
+  )
+)
+
+(defwidget memory []
+  (box :class "memory"
+    (label :text "${mem_percent}%")
+  )
+)
+
+;; 
+;; Other Bar
+;;
+
+(defwindow other-bar
+  :monitor 0
+  :geometry (geometry
+    :x "0%"
+    :y "15px"
+    :width "99%"
+    :height "50px"
+    :anchor "top center"
+  )  
+  :stacking "fg"
+  :exclusive "true"
+  :windowtype "dock"
+  :class "other-bar"
+  (bar-2)
+)
+
+(defwidget bar-2 []
+  (box
+    :class "bar-class"
+    :orientation "h"
+    (left-2)
+    (center-2)
+    (right-2)  
+  )
+)
+
+(defwidget left-2 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :class "left-modules"
+    (weather)
+  )
+)
+
+(defwidget center-2 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :class "center-modules"
+    (workspaces-2)
+  )
+)
+
+(defwidget right-2 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "end"
+    :class "right-modules"
+    (volume)
+  )
+)
+
+(defwidget workspaces-2 []
+  (eventbox
+    :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+    :class "workspaces-widget"
+    (box
+      :space-evenly true
+      (label
+        :text "${workspaces_2}${current_workspace}"
+      :visible false)
+      (for workspace in workspaces_2
+        (eventbox
+          :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box
+            :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.windows > 0 || workspace.id == current_workspace ? "" : ""}")
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget volume []
+  (eventbox
+    :class "volume"
+    :orientation "h"
+    :width 50
+    :cursor "pointer"
+    :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    :onrightclick "pavucontrol &"
+    :onscroll "~/.config/eww/bar/scripts/change-volume {}"
+    (label :text "${volume_icon} q ${volume_muted == 'no' ? '${volume}%' : ''}")
+  )  
+)
+
+(defwidget weather []
+  (box
+    :class "weather"
+    :orientation "h"
+    :width 50
+    (label :text "${current_weather}")
+  )
+)
+
+;; (defwidget bluetooth []
+  
+;; )

@@ -82,7 +82,7 @@ formatters.setup {
   {
     command = "prettier",
     extra_args = { "--print-width", "100" },
-    filetypes = { "typescript", "typescriptreact", "html", "css", "scss" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars" }
   },
 }
 -- local linters = require "lvim.lsp.null-ls.linters"

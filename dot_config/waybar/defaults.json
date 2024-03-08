@@ -11,6 +11,7 @@
         "~/.config/waybar/modules/media-toggle.json",
         "~/.config/waybar/modules/mpris.json",
         "~/.config/waybar/modules/bluetooth.json",
+        "~/.config/waybar/modules/temperature.json",
     ],
     "layer": "top",
 }

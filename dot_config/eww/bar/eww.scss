@@ -1,0 +1,84 @@
+.bar-class {
+  background-color: #0f0f17; // background
+  color: #cdd6f4; // foreground
+  padding: 2px 20px;
+  border-radius: 100px;
+}
+
+.workspaces-widget {
+  .workspace-entry {
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+
+    &.current {
+      color: #89b4fa; // color 4
+    }
+  }
+}
+
+.music {
+  font-size: 16px;
+
+  .cover-art {
+    background-size: cover;
+    background-position: center;
+    min-height: 30px;
+    min-width: 30px;
+    margin: 10px;
+    border-radius: 50%;
+  }
+
+  .song {
+    margin-right: 10px;
+  }
+}
+
+.music-wrapper {
+	padding: 20px;
+	background-color: #0f0f17; // background
+	border: 3px solid #89b4fa; // color 4
+	border-radius: 15px;
+	font-size: 16px;
+
+	.cover-art {
+		background-size: cover;
+		background-position: center;
+		min-height: 120px;
+		min-width: 120px;
+		border-radius: 20px;
+		margin: 20px;
+	}
+
+	.song-info {
+		padding-top: 30px;
+	}
+}
+
+.datetime {
+  font-size: 18px;
+  font-weight: 900;
+
+  .separator {
+    margin: 10px;
+    color: rgba(#cdd6f4, 0.7); // foreground
+  }
+}
+
+.calendar-wrapper {
+	padding: 10px;
+	background-color: #0f0f17; // background
+	border: 3px solid #89b4fa; // color 4
+	border-radius: 15px;
+	font-size: 18px;
+}
+
+.volume {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.weather {
+  font-size: 16px;
+  font-weight: 800;
+}

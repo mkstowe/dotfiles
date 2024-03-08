@@ -1,0 +1,9 @@
+#!/bin/bash
+
+status=$(playerctl status)
+artist=$(playerctl metadata artist)
+
+if [ $status == "Playing" ] || [ $status == "Paused" ]
+then
+  echo "$artist"
+fi

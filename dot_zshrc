@@ -28,10 +28,10 @@ zplug "MichaelAquilina/zsh-auto-notify"
 zplug "hlissner/zsh-autopair", defer:2
 zplug "ianthehenry/zsh-autoquoter"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-completions"
 zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", defer:2
-zplug "jeffreytse/zsh-vi-mode"
+# zplug "jeffreytse/zsh-vi-mode"
 zplug "MichaelAquilina/zsh-you-should-use"
 
 zplug "plugins/aliases", from:oh-my-zsh
@@ -192,7 +192,7 @@ alias vim='lvim'
 alias vi='lvim'
 alias v='f -e lvim'
 
-alias code='code-insiders'
+# alias code='code-insiders'
 
 savepac () {
 	pacman -Qet | awk {'print $1'} > ~/Documents/pacman_list.txt

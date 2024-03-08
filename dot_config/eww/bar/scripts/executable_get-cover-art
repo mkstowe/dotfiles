@@ -1,0 +1,9 @@
+#!/bin/bash
+
+url=$(playerctl metadata mpris:artUrl)
+status=$(playerctl status)
+
+if [ $status == "Playing" ] || [ $status == "Paused" ]
+then
+  echo "$url"
+fi
