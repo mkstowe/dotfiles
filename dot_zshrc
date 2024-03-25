@@ -28,10 +28,10 @@ zplug "MichaelAquilina/zsh-auto-notify"
 zplug "hlissner/zsh-autopair", defer:2
 zplug "ianthehenry/zsh-autoquoter"
 zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-completions"
 zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search", defer:2
-# zplug "jeffreytse/zsh-vi-mode"
+zplug "jeffreytse/zsh-vi-mode"
 zplug "MichaelAquilina/zsh-you-should-use"
 
 zplug "plugins/aliases", from:oh-my-zsh
@@ -60,10 +60,10 @@ if ! zplug check --verbose; then
 		echo; zplug install
 	fi
 fi
-							
+
 zplug load
-							
-source $ZSH/oh-my-zsh.sh
+
+source ~/.config/set-api-keys.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -72,6 +72,7 @@ eval "$(fasd --init auto)"
 export PATH=$PATH:$HOME/.local/bin
 export PROJECT_HOME=$HOME/projects
 export EDITOR=lvim
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 alias ez='nvim ~/.zshrc'
 alias suez='sudo nvim ~/.zshrc'
@@ -215,3 +216,6 @@ source /usr/share/nvm/init-nvm.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval $(thefuck --alias)
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi

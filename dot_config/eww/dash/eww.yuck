@@ -1,0 +1,72 @@
+(include "./widgets/datetime/eww.yuck")
+(include "./widgets/image/eww.yuck")
+(include "./widgets/music/eww.yuck")
+
+(defwindow dash
+  :monitor 1
+  :geometry (geometry
+    :x 24
+    :width 700
+    :height "100%"
+    :anchor "center left"
+  )
+  :stacking "bg"
+  :exclusive true
+  :windowtype "dock"
+  :class "dash-container"
+  (box
+    :class "dash"
+    :orientation "v"
+    (main)
+  )
+)
+
+(defwidget main []
+  (box
+    :class "bg"
+    :orientation "v"
+    :space-evenly "false"
+    (img)
+    (datetime)
+    (music)
+    ; (row_1)
+    ; (row_2)
+    ; (row_3)
+    ; (row_4)
+  )
+)
+
+(defwidget row_1 []
+  (box
+    :class "row-1"
+    :orientation "h"
+    :space-evenly "false"
+    (img)
+    (datetime)
+  )
+)
+
+(defwidget row_2 []
+  (box
+    :class "row-2"
+    :orientation "h"
+    :space-evenly "false"
+    (music)
+  )
+)
+
+(defwidget row_3 []
+  (box
+    :class "row-3"
+    :orientation "h"
+    :space-evenly "false"
+  )
+)
+
+(defwidget row_4 []
+  (box
+    :class "row-4"
+    :orientation "h"
+    :space-evenly "false"
+  )
+)

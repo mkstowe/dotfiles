@@ -1,0 +1,66 @@
+(defwidget music []
+  (eventbox
+    :onhoverlost "eww close music_window"
+    (box
+      :class "music-wrapper"
+      :orientation "h"
+      :space-evenly false
+      (box
+        :class "cover-art"
+        :style "background-image: url('${song_cover_art}')"
+      )
+      (box
+        :class "song-info"
+        :orientation "v"
+        :spacing 20
+        :space-evenly false
+        :width 300
+        (label
+          :class "artist"
+          :halign "center"
+          :visible "${current_artist != ''}"
+          :wrap true
+          :justify "center"
+          :text "${current_artist}"
+        )
+        (label
+          :class "song hide"
+          :halign "center"
+          :hexpand true
+          :wrap true
+          :justify "center"
+          :text "${current_track}"
+        )
+        (centerbox
+            (box)
+        (box
+          :class "music-controls"
+          :spacing 25
+          (eventbox
+            :width 20
+            :class "music-control"
+            :cursor "pointer"
+            :onclick "playerctl prev"
+            ""
+          )
+          (eventbox
+            :width 20
+            :class "music-control"
+            :cursor "pointer"
+            :onclick "playerctl play-pause"
+            "${player_status=='Playing' ? '' : ''}"
+          )
+          (eventbox
+            :width 20
+            :class "music-control"
+            :cursor "pointer"
+            :onclick "playerctl next"
+            ""
+          )
+        )
+        (box)
+    )
+      )
+    )
+  )
+)

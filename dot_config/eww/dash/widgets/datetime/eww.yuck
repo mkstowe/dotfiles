@@ -1,0 +1,72 @@
+(defpoll hour :interval "1s" "date +\"%I\"")
+(defpoll minute :interval "1s" "date +\"%M\"")
+(defpoll year :interval "1s" "date +\"%C\"")
+(defpoll am_pm :interval "1s" "date +\"%p\"")
+(defpoll day :interval "1s" "date +\"%d\"")
+(defpoll month :interval "1s" "date +\"%m\"")
+(defpoll day_name :interval "1s" "date +\"%A\"")
+(defpoll month_name :interval "1s" "date +\"%B\"")
+
+(defwidget datetime []
+  (box
+    :class "datetime"
+    :orientation "v"
+    :space-evenly false
+    :valign "center"
+    :halign "center"
+    (box
+      :class "time"
+      :orientation "h"
+      :space-evenly false
+      :halign "start"
+      :valign "center"
+      (label
+        :class "hour"
+        :halign "start"
+        :text hour
+      )
+      (label
+        :class "sep"
+        :halign "start"
+        :text ":"
+      )
+      (label
+        :class "minute"
+        :halign "start"
+        :text minute
+      )
+      (label
+        :class "am_pm"
+        :valign "start"
+        :halign "start"
+        :text am_pm
+      )
+    )
+    (box
+      :class "date"
+      :orientation "h"
+      :space-evenly false
+      :halign "start"
+      (label
+        :class "month"
+        :text month
+      )
+      (label
+        :class "sep"
+        :text "-"
+      )
+      (label
+        :class "day"
+        :text day
+      )
+      (label
+        :class "sep"
+        :text "-"
+      )
+      (label
+        :class "year"
+        :text year
+      )
+    )
+  )
+)

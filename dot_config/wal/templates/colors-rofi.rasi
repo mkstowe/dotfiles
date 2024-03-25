@@ -1,9 +1,9 @@
 * {{
-    font: "JetBrainsMono Nerd Font 24";
-    
     background: {background};
     foreground: {foreground};
-    
+    fg: {foreground};
+    bg: {background};
+
     color1: {color1};
     color2: {color2};
     color3: {color3};

@@ -1,0 +1,24 @@
+.datetime {
+    padding: 50px;
+
+    .time {
+        .hour, .minute, .sep {
+            font-size: 64px;
+            font-weight: 800;
+            padding: 0 4px;
+        }
+
+        .am_pm {
+            font-size: 24px;
+            font-weight: 600;
+            padding-top: 5px;
+        }
+    }
+
+    .date {
+        .month, .day, .year, .sep {
+            font-size: 42px;
+            padding: 0 4px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+(defwindow audio_window
+    :monitor 1
+    :stacking "fg"
+    :exclusive false
+    :class "audio-window"
+    :geometry (geometry
+        :anchor "top right"
+        :x "280px"
+        :y "10px"
+    )
+    (audio_devices)
+)

@@ -1,0 +1,21 @@
+(defpoll calendar_day :interval "1m" "date '+%d'")
+(defpoll calendar_month :interval "1m" "date '+%M'")
+(defpoll calendar_year :interval "1m" "date '+%Y'")
+
+(defwidget cal []
+  (eventbox
+    :onhoverlost "eww -c . close calendar_window"
+    (box
+      :class "calendar-wrapper"
+      :orientation "v"
+      (box
+        (calendar
+          :class "calendar"
+          :day calendar_day
+          :month calendar_month
+          :year calendar_year
+        )
+      )
+    )
+  )
+)
