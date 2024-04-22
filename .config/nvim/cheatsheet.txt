@@ -1,0 +1,181 @@
+## search @telescope
+Leap | s{c1}{c2}
+Leap from window | S{c1}{c2}:w
+Search forward | /
+Search backward | ?
+Next match | n
+Previous match | N
+Select to next match | gn
+Select to previous match | gN
+Search word under cursor | *
+Search and replace | <leader>srr
+Search and replace under cursor | <leader>srw
+
+Search live grep | <leader>sp
+Search buffers | <leader>sb
+Search help docs | <leader>sh
+Search marks | <leader>sm
+Search in file | <leader>si
+search files | <leader>s/
+Search keymaps | <leader>sk
+Search commands | <leader>sc
+Search functions | <leader>sf
+Search notification history | <leader>sn
+Search git commits | <leader>sgc
+Search git branches | <leader>sgb
+Search git status | <leader>sgs
+Search lsp references | <leader>slr
+Search lsp implementations | <leader>sli
+Search lsp definitions | <leader>sld
+
+## marks
+Set mark | m{c}
+Delete mark | dm{c}
+Next mark | <leader>mn
+Previous mark | <leader>mp
+Preview mark | <leader>mv
+Delete all marks in buffer | <leader>md
+
+## notifications
+Dismiss notifications | <leader>nd
+
+## toggle @line @numbers @relative
+Toggle line numbers | <leader>tn
+Toggle relative line numbers | <leader>tr
+Toggle file tree | <leader>tt
+Toggle twilight (dim) | <leader>tw
+Toggle zen mode | <leader>tz
+
+## windows
+Focus other window | <leader>ww
+New window below | <leader>wn
+New window right | <leader>wr
+Close window | <leader>wd
+Close other windows | <leader>wx
+Split current window below | <leader>w-
+Split current window right | <leader>w|
+Focus left window | <C-Left>
+Focus right window | <C-Right>
+Focus upper window | <C-Up>
+Focus lower window | <C-Down>
+
+## tabs
+Select last tab | <leader><tab>e
+Select first tab | <leader><tab>b
+New tab | <leader><tab><tab>
+Close tab | <leader><tab>d
+Next tab | <leader><tab>n
+Previous tab | <leader><tab>p
+
+## files @buffers
+List open files | <leader>fl
+Close file | <leader>fc
+Delete file | <leader>fd
+Close other files | <leader>fx
+Format file | <leader>fm
+Open file below | <leader>fO
+Open file to right | <leader>fo
+
+## comments
+Toggle comment | <C-/>
+Box comment | <leader>cb
+Title line comment | <leader>ct
+Separator comment | <leader>cl
+Section comment | <leader>cs
+
+## cut @cutlass @delete
+Cut selection | x
+Cut line | xx
+
+## movement @navigation @go @to
+Start of next word | w
+End of next word | e
+Start of previous word | b
+End of previous word | ge
+Start of line | 0
+End of line | $
+This line non-blank | ^
+Next line non-blank | +
+Previous line non-blank | -
+Find next {c}haracter in line | f{c}
+Before next {c}haracter in line | t{c}
+Find previous {c}haracter in line | F{c}
+Before previous {c}haracter in line | T{c}
+Repeat f/t/F/T forward | ;
+Repeat f/t/F/T backward | ,
+Go to line {n} | :{n}
+Go to line {n} | {n}G
+Go to column {n} | {n}|
+Go to next blank line | }
+Go to previous blank line | {
+Go to beginning of next block | [{
+Go to end of next block | ]}
+Go to beginning of sentence | (
+Go to end of sentence | )
+Go to top of window | H
+Go to bottom of window | L
+Go to middle of window | M
+Go to matching delim | %
+Go to tag | :tag {tagname}
+
+Cycle backward through results | g%
+LSP: Go to definition | <leader>ld
+LSP: Go to declaration | <leader>lD
+LSP: Go to implementation | <leader>li
+LSP: Go to type definition | <leader>lt
+End of previous word | ge
+Go to file under cursor | gf
+First line | gg
+Last line | G
+Go to last insertion and INSERT | gi
+Search forwards and select | gn
+Search backwards and select | gN
+Visual select last selection | gv 
+Scroll up a page | <C-b>
+Scroll down a page | <C-f>
+Scroll up half a page | <C-u>
+Scroll down half a page | <C-d>
+Scroll up a bit | <C-y>
+Scroll down a bit | <C-e>
+Scroll to top | zt
+Scroll to bottom | zb
+Scroll to center | zz
+
+Harpoon: Add to list | <leader>ha
+Harpoon: View list | <leader>hl
+Harpoon: Next | <leader>hn
+Harpoon: Previous | <leader>hp
+Harpoon: Delete from list | <leader>hd
+
+## text-manipulation @case
+Change selection to uppercase | U
+Change selection to lowercase | u
+Uppercase line | <leader>~UU
+Lowercase line | <leader>~uu
+Toggle line case | <leader>~~
+Toggle case | ~
+Indent selection | >
+Unindent selection | <
+Indent line | >>
+Unindent line | <<
+Join next line | J
+Spell suggest | z=
+Interactive align | <leader>~a
+Increment | ++
+Decrement | --
+Sort in bracket pairs | <leader>~s{c}
+Sort in paragraph | <leader>~sp
+Sort line | <leader>~ss
+
+## surround
+Add surrounding | <leader>za{motion}{char}
+Delete surrounding | <leader>zd{char}
+Change surrounding | <leader>zc{target}{replacement}
+
+## diagnostics @trouble @errors
+Document diagnostics | <leader>xx
+Workspace diagnostics | <leader>xX
+Location list | <leader>xL
+Quickfix list | <leader>xQ
+
+

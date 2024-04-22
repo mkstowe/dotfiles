@@ -1,0 +1,18 @@
+(defpoll date :interval "1s" `date '+%A, %B %d'`)
+(defpoll time :interval "1s" `date '+%I:%M %P'`)
+
+(defwidget datetime []
+    (box
+        :class "widget datetime"
+    (eventbox
+        :cursor "pointer"
+        :onclick "./scripts/toggle-window calendar_window"
+        (box
+            :space-evenly "false"
+            (label :class "date" :text "${date}")
+            (label :class "datetime-sep" :text "/")
+            (label :class "time" :text "${time}")
+        )
+        )
+    )
+)

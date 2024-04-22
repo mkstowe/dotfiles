@@ -1,0 +1,30 @@
+(defwidget audio_devices []
+    (eventbox
+        :class "widget"
+        :onhoverlost "eww -c . close audio_window"
+        (box
+            :class "audio-wrapper"
+            :orientation "v"
+            :space-evenly false
+            (box 
+                :class "header"
+                :space-evenly false
+                (label :text "Switch Audio Device" :class "title")
+            )
+            (box
+                :class "body"
+                :space-evenly false
+                :orientation "v"
+                (eventbox
+                    :height 50
+                    :class "device-btn"
+                    :cursor "pointer"
+                    :onclick "./scripts/set-audio-device alsa_output.usb-Vanatoo_Vanatoo_T0-00.analog-stero"
+                    (label
+                        :text "Vanatoo T0"
+                    )
+                )
+            )
+        )
+    )
+)

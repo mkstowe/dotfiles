@@ -1,0 +1,9 @@
+(defwidget separator []
+    (box
+        :class "separator-wrapper"
+        (label
+            :class "separator"
+            :text "|"
+        )
+    )
+)

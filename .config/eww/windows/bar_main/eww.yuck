@@ -1,0 +1,51 @@
+(defwindow bar_main
+    :monitor 1
+    :geometry (geometry
+        :x "0%"
+        :y "15px"
+        :width "99%"
+        :height "50px"
+        :anchor "top center"
+    )
+    :stacking "fg"
+    :exclusive "true"
+    :windowtype "dock"
+    :class "main-bar"
+    (box
+        :class "bar"
+        :orientation "h"
+        (left_main)
+        (center_main)
+        (right_main)
+    )
+)
+
+(defwidget left_main []
+    (box
+        :orientation "h"
+        :space-evenly false
+        :halign "start"
+        :class "left-modules"
+        (currently_playing)
+    )
+)
+
+(defwidget center_main []
+    (box
+        :orientation "h"
+        :space-evenly false
+        :halign "center"
+        :class "center-modules"
+        (workspaces_main)
+    )
+)
+
+(defwidget right_main []
+    (box
+        :orientation "h"
+        :space-evenly false
+        :halign "end"
+        :class "right-modules"
+        (datetime)
+    )
+)

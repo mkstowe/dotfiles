@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# start waybar if not started
+if ! pgrep -x "waybar" > /dev/null; then
+	waybar -c ~/.config/waybar/bars.json &
+fi
+
+# current checksums
+current_checksum=$(find ~/.config/waybar -type f -exec md5sum {} \; | sort -k 2 | md5sum)
+
+# loop forever
+while true; do
+	# new checksums
+  new_checksum=$(find ~/.config/waybar -type f -exec md5sum {} \; | sort -k 2 | md5sum)
+
+	# if checksums are different
+	if [ "$current_checksum" != "$new_checksum" ]; then
+		# kill waybar
+		killall waybar
+
+		# start waybar
+		waybar -c ~/.config/waybar/bars.json &
+
+		# update checksums
+current_checksum=$(find ~/.config/waybar -type f -exec md5sum {} \; | sort -k 2 | md5sum)
+	fi
+done

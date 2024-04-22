@@ -1,0 +1,10 @@
+(defwidget audio_btn []
+    (eventbox
+        :class "widget audio-btn"
+        :onclick "./scripts/toggle-window audio_window"
+        :cursor "pointer"
+        (label 
+            :text "󰓃"
+        )
+    )
+)

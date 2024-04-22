@@ -1,0 +1,12 @@
+(defwindow calendar_window
+    :monitor 1
+    :stacking "fg"
+    :exclusive false
+    :class "calendar-window"
+    :geometry (geometry
+        :anchor "top right"
+        :x "50px"
+        :y "10px"
+    )
+    (cal)
+)

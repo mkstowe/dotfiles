@@ -1,0 +1,28 @@
+(defpoll player_status :interval "1s" "playerctl status")
+(defpoll current_track :interval "1s" "~/.config/eww/scripts/song-info track")
+(defpoll current_artist :interval "1s" "~/.config/eww/scripts/song-info artist")
+(defpoll song_cover_art :interval "1s" "~/.config/eww/scripts/song-info art")
+(deflisten song_position "playerctl --follow metadata --player playerctld --format '{{duration(position)}}'")
+(deflisten song_length "playerctl --follow metadata --player playerctld --format '{{duration(mpris:length))}}'")
+
+(defwidget currently_playing []
+    (box
+        :class "currently-playing"
+        :space-evenly false
+        (eventbox 
+            :cursor "pointer"
+            (button
+                :onclick "playerctl play-pause"
+                :class "cover-art"
+                :style "background-image: url('${song_cover_art}');"
+            )
+        )
+        (eventbox
+            :class "song"
+            :wrap true
+            :cursor "pointer"
+            :onclick "~/.config/eww/scripts/toggle-window music_window"
+            (label :text "${current_artist} - ${current_track}")
+        )
+    )
+)

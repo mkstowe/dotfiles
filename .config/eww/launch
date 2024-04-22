@@ -1,0 +1,30 @@
+#!/bin/bash
+
+VALID_CONFIGS=("bars" "dash")
+
+launch_eww() {
+  CONFIG="$HOME/.config/eww/$1"
+  EWW="$HOME/.local/bin/eww -c $CONFIG"
+
+  if [[ $(eww ping -c $CONFIG) != "pong" ]]; then
+    ${EWW} daemon &
+    sleep 3
+  fi
+
+  WINDOWS=""
+  case "$1" in
+    "bars") WINDOWS="bar_main bar_other" ;;
+    "dash") WINDOWS="dash" ;;
+    *) WINDOWS="" ;;
+  esac
+
+  ${EWW} open-many $WINDOWS
+}
+
+for arg in "$@"; do
+  if [[ ! $(echo ${VALID_CONFIGS[@]} | grep -F -w $arg) ]]; then
+    echo "$arg is not a valid config"
+  else
+    launch_eww $arg
+  fi
+done

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+status=$(playerctl status)
+
+if [[ $1 == "artist" && ($status == "Playing" || $status == "Paused") ]]; then
+  artist_length=25
+  artist=$(playerctl metadata artist)
+  # if [[ ${#artist} -lt $artist_length ]]; then
+    echo $artist
+  # else
+    # echo "$(head -c $((artist_length - 3)) <<< "$artist" | xargs)..."
+    # fi
+elif [[ $1 == "track" ]]; then
+track_length=20
+  track=$(playerctl metadata title)
+  # if [[ ${#track} -lt $track_length ]]; then
+    echo $track
+  # else
+    # echo "$(head -c $((track_length - 3)) <<< "$track" | xargs)..."
+  # fi
+elif [[ $1 == "art" && ($status == "Playing" || $status == "Paused") ]]; then
+  echo "$(playerctl metadata mpris:artUrl)"
+fi

@@ -1,0 +1,35 @@
+.music {
+  padding: 20px;
+
+  .music-box {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba($color0, 0.2);
+
+    .song {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .artist {
+      font-size: 18px;
+    }
+
+    .controls {
+      padding-top: 15px;
+
+      .control {
+        padding: 20px;
+        font-size: 24px;
+
+        &.play-pause {
+            font-size: 32px;
+        }
+
+        &:hover {
+          color: $color4;
+        }
+      }
+    }
+  }
+}

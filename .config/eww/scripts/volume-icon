@@ -1,0 +1,18 @@
+#!/bin/python3
+import subprocess
+
+def get_icon():
+    is_muted = subprocess.check_output("pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'", shell=True, text=True)
+    if is_muted.strip() == 'yes':
+        return '󰝟'
+
+    vol = subprocess.check_output("wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}'", shell=True)
+    vol = round(int(float(vol) * 100))
+
+    if vol < 20:
+        return ''
+    if vol < 60:
+        return ''
+    return ''
+
+print(get_icon())

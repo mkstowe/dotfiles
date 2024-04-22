@@ -1,0 +1,1 @@
+/home/mkstowe/.cache/wal/nvim-colors-override.lua

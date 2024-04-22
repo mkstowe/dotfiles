@@ -1,0 +1,18 @@
+(defpoll volume :interval "100ms" "./scripts/volume")
+(defpoll volume_icon :interval "100ms" "./scripts/volume-icon")
+(defpoll volume_muted :interval "100ms" "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'")
+
+(defwidget volume []
+    (box
+        :class "widget volume"
+    (eventbox
+        :orientation "h"
+        :width 50
+        :cursor "pointer"
+        :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        :onrightclick "pavucontrol &"
+        :onscroll "./scripts/change-volume {}"
+        (label :text "${volume_icon}  ${volume_muted == 'no' ? '${volume}%' : ''}")
+    )
+    )
+)

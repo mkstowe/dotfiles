@@ -1,0 +1,68 @@
+(defpoll song :interval "1s" "../scripts/song-info track")
+(defpoll artist :interval "1s" "../scripts/song-info artist")
+(defpoll status :interval "1s" "playerctl status")
+; (deflisten bars :initial "" `printf "[general]\nframerate=60\nbars = 7\n[output]\nmethod = raw\nraw_target = /dev/stdout\ndata_format = ascii\nascii_max_range = 7\n" | cava -p /dev/stdin | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g; '`)
+; (defpoll bars :interval "1s" "cava")
+; (defpoll song :interval "1s" "../scripts/song-info track")
+
+(defwidget music []
+  (box
+    :class "music"
+    :width 350
+    :height 200
+    (box
+      :class "music-box"
+      :width 325
+      :orientation "v"
+      :space-evenly false
+      :spacing 15
+      (label
+        :limit-width 40
+        :valign "start"
+        :halign "start"
+        :class "song"
+        :text song
+      )
+      (label
+        :limit-width 50
+        :valign "start"
+        :halign "start"
+        :class "artist"
+        :text artist
+      )
+      (centerbox
+        :class "tmp"
+        :valign "end"
+        (box)
+        (box
+          :class "controls"
+          :orientation "h"
+          :spacing 35
+          (eventbox
+            :width 50
+            :height 50
+            :class "control"
+            :cursor "pointer"
+            :onclick "playerctl prev"
+            ""
+          )
+          (eventbox
+            :width 50
+            :class "control play-pause"
+            :cursor "pointer"
+            :onclick "playerctl play-pause"
+            "${status=='Playing' ? '󰏤' : '󰐊'}"
+          )
+          (eventbox
+            :width 50
+            :class "control"
+            :cursor "pointer"
+            :onclick "playerctl next"
+            ""
+          )
+        )
+        (box)
+      )
+    )
+  )
+)

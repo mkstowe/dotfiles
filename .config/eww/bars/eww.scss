@@ -1,0 +1,37 @@
+@import "/home/mkstowe/.cache/wal/colors";
+
+@import "./windows/bar_main/eww";
+@import "./windows/bar_other/eww";
+@import "./windows/calendar/eww";
+@import "./windows/music/eww";
+@import "./windows/audio/eww";
+
+@import "./widgets/separator/eww";
+@import "./widgets/workspaces/eww";
+@import "./widgets/datetime/eww";
+@import "./widgets/currently_playing/eww";
+@import "./widgets/weather/eww";
+@import "./widgets/volume/eww";
+@import "./widgets/music/eww";
+@import "./widgets//audio_devices/eww";
+@import "./widgets//audio_btn/eww";
+
+* {
+  all: unset;
+  font-family: "CaskaydiaCove Nerd Font";
+  transition: 100ms ease-in-out;
+}
+
+.bar {
+  // background-color: $background;
+  color: $foreground;
+  padding: 0px 30px;
+  margin-bottom: 15px;
+  // border-radius: 100px;
+}
+
+.widget {
+  border: 2px solid rgba($foreground, 0.7);
+  background-color: rgba($background, 0.8);
+  border-radius: 50px;
+}

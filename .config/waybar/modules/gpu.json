@@ -1,0 +1,8 @@
+{
+  "custom/gpu": {
+    "format": " {}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/gpuinfo.sh",
+    "interval": 10
+  }
+}

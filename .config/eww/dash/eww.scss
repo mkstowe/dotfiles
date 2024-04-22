@@ -1,0 +1,20 @@
+@import "/home/mkstowe/.cache/wal/colors";
+
+@import "./widgets/datetime/eww";
+@import "./widgets/image/eww";
+@import "./widgets/music//eww";
+
+* {
+  all: unset;
+  font-family: "CaskaydiaCove Nerd Font";
+}
+
+.dash {
+  color: $foreground;
+  padding-top: 43px;
+  padding-bottom: 58px;
+
+  .bg {
+    background-color: $background;
+  }
+}

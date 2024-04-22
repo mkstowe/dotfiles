@@ -1,0 +1,9 @@
+#!/bin/bash
+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ printf "%.0f\n", $2*100 }')
+
+if [ vol -gt 1 ] ; then
+    echo "here"
+else
+    echo "not here"
+fi

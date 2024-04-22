@@ -1,0 +1,16 @@
+.currently-playing {
+    font-size: 16px;
+
+    .cover-art {
+        background-size: cover;
+        background-position: center;
+        min-height: 30px;
+        min-width: 30px;
+        margin: 10px;
+        border-radius: 50%;
+    }
+
+    .song {
+        margin-right: 10px;
+    }
+}

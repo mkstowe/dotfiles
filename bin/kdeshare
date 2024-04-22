@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -e
+
+DEVICE="$(kdeconnect-cli -l --id-only | head -n 1)"
+COMMAND=""
+CONTENT=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -d|--device)
+      DEVICE="$2"
+      shift
+    ;;
+    -s|--share|--send)
+      COMMAND="--share"
+      CONTENT="$2"
+      shift
+    ;;
+    -c|--clipboard)
+      COMMAND="--send-clipboard"
+      CONTENT=""
+    ;;
+    -t|--text)
+      COMMAND="--share-text"
+      CONTENT="$2"
+      shift
+    ;;
+    -n|--notifications)
+      COMMAND="list-notifications"
+      CONTENT=""
+    ;;
+    -l|--lock)
+      COMMAND="--lock"
+      CONTENT=""
+    ;;
+    -u|--unlock)
+      COMMAND="--unlock"
+      CONTENT=""
+    ;;
+    -r|--ring)
+      COMMAND="--ring"
+      CONTENT=""
+    ;;
+  *)
+    echo "ERROR: $1 is not a valid command."
+    exit 1
+  esac
+  shift
+done
+
+kdeconnect-cli -d $DEVICE $COMMAND $CONTENT

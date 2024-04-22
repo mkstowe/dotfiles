@@ -1,0 +1,11 @@
+.workspaces {
+    .workspace {
+        font-size: 18px;
+        margin: 5px;
+        padding: 5px;
+
+        &.current {
+            color: $color4;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+(defwindow music_window
+    :monitor 1
+    :stacking "fg"
+    :exclusive false
+    :class "music-window"
+    :geometry (geometry
+        :anchor "top left"
+        :x "50px"
+        :y "10px"
+    )
+    (music)
+)

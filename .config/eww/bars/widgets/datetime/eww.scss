@@ -1,0 +1,10 @@
+.datetime {
+    padding: 0 30px;
+    font-size: 18px;
+    font-weight: 900;
+
+    .datetime-sep {
+        margin: 10px;
+        color: rgba($foreground, 0.7);
+    }
+}
