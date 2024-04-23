@@ -16,7 +16,11 @@ alias gpull='git pull'
 alias dots='git --git-dir $HOME/dotfiles/ --work-tree=$HOME'
 alias ds='git --git-dir $HOME/dotfiles/ --work-tree=$HOME status'
 alias da='git --git-dir $HOME/dotfiles/ --work-tree=$HOME add'
-alias dc='git --git-dir $HOME/dotfiles/ --work-tree=$HOME commit'
+alias dp='git --git-dir $HOME/dotfiles/ --work-tree=$HOME push'
+
+dc() {
+  git --git-dir $HOME/dotfiles/ --work-tree=$HOME commit -m $1
+}
 
 # NPM
 alias npmi='npm i'
