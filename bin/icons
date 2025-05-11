@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rofi -modi nerdy -show nerdy -theme-str '@import "~/.config/rofi/app-menu.rasi"'
