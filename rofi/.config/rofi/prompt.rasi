@@ -1,0 +1,54 @@
+/**
+ * This theme is intended for a 2 items option menu with a headerbar.
+ */
+
+@import "shared/option-menu.rasi"
+* {
+  font: @text-font-small;
+}
+
+#window {
+  height: @prompt-window-height;
+  width: @prompt-window-width;
+  children: [ inputbar, horibox ];
+  border: @prompt-window-border;
+  border-color: @color4;
+}
+
+#inputbar {
+  children: [ prompt ];
+}
+
+#prompt {
+  enabled: false;
+}
+
+#listview {
+  padding: @prompt-listview-padding;
+  spacing: @prompt-listview-spacing;
+  lines: 2;
+  border: 0;
+}
+
+#element {
+  font: @prompt-text-font;
+  padding: @prompt-element-padding;
+}
+
+element.alternate.active,
+element.normal.active,
+element.alternate.urgent,
+element.normal.urgent {
+  background-color: @background;
+  text-color: @foreground;
+}
+
+element.selected.urgent {
+  background-color: @background;
+  text-color: @color4;
+}
+
+element.selected.active {
+  background-color: @background;
+  text-color: @color4;
+}

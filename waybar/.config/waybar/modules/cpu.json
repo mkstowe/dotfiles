@@ -1,0 +1,8 @@
+{
+  "custom/cpu": {
+    "format": " {}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/cpuinfo.sh",
+    "interval": 10
+  }
+}

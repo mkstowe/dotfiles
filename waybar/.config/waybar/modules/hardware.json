@@ -1,0 +1,12 @@
+{
+  "group/hardware": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/hardware-icon", "custom/gpu", "custom/cpu", "memory", "disk"]
+  },
+  "custom/hardware-icon": {
+    "format": " "
+  }
+}

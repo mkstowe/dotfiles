@@ -1,0 +1,109 @@
+
+alias ez='lvim ~/.zshrc'
+alias po='poweroff'
+alias sudo='sudo '
+alias ag='acs -g'
+
+# Git
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gA='git add --all'
+alias gd='git add .'
+alias gpush='git push'
+alias gpull='git pull'
+
+alias dots='git --git-dir $HOME/dotfiles/ --work-tree=$HOME'
+alias ds='git --git-dir $HOME/dotfiles/ --work-tree=$HOME status'
+alias da='git --git-dir $HOME/dotfiles/ --work-tree=$HOME add'
+alias dp='git --git-dir $HOME/dotfiles/ --work-tree=$HOME push'
+
+dc() {
+  git --git-dir $HOME/dotfiles/ --work-tree=$HOME commit -m $1
+}
+
+# NPM
+alias npmi='npm i'
+alias ni='npm i'
+alias npmg='npm i -g'
+alias npmr='npm run'
+alias npmd='npm i -D'
+
+alias ls='ls -Fsh1 --color=auto'
+alias lsa='ls -AFsh1 --color=auto'
+alias lsl='ls -AFosh1 --color=auto'
+
+alias showip='hostname -i'
+
+#alias rm='~/.local/bin/careful_rm.py -c'
+alias mv='mv -vi'
+alias cp='cp -vir'
+
+alias q='exit'
+alias :q='exit'
+alias c='clear'
+alias pd='pwd'
+
+alias h='history'
+alias hg='fc -El 0 | rg'
+alias dud='du -d 1 -h'
+alias duf='du -sh'
+alias t='tail -f'
+alias help='man'
+alias p='ps -f'
+alias grep="rg"
+alias g='rg'
+alias l='less'
+alias m='more'
+alias clip='wl-copy'
+
+alias pacsearch='pacman -Ss'
+alias yasearch='yay -Ss'
+
+alias mkdir='mkdir -p'
+
+mdc() {
+  mkdir -p $1 && cd $1
+}
+
+alias loadz='exec zsh'
+
+alias vim='nvim'
+alias vi='nvim'
+alias v='fasd -f -e nvim'
+
+angular() {
+  googler $1 -w angular.io
+}
+
+google() {
+  googler $1
+}
+
+reddit() {
+  googler $1 -w reddit.com
+}
+
+alias timer='arttime -k timer.custom'
+
+# Paru
+alias paconf='paru -Pg'                         # Show current paru config
+alias paclean='paru -Sc'                        # Clean unused cache/packages
+alias paclr='paru -Scc'                         # Clear all cache
+alias pain='paru -S'                            # Install package
+alias palocal='paru -U'                         # Install local package
+alias paindep='paru -S --asdeps'                # Install as dependency
+alias palinfo='paru -Qi'                        # Show info about installed package
+alias palsearch='paru -Qs'                      # Search local installed packages
+alias palist='paru -Qe'                         # List explicitly installed packages
+alias pamirr='paru -Syy'                        # Force refresh all mirrors
+alias paorph='paru -Qtd'                        # Remove orphaned packages
+alias pare='paru -R'                            # Remove package, keep config
+alias parem='paru -Rns'                         # Remove package + unneeded deps
+alias parepo='paru -Si'                         # Show remote package info
+alias parepos='paru -Ss'                        # Search remote packages
+alias paupd='paru -Sy'                          # Refresh package databases
+alias paupg='paru -Syu'                         # Full system upgrade
+alias pasu='paru -Syu --no-confirm'             # Upgrade all, no prompts
+alias paup='paru -Syu'                          # Synced system upgrade
+
