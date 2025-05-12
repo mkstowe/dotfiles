@@ -66,7 +66,7 @@ export EDITOR=lvim
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
-z4h source ~/.config/zsh/shell-aliases
+z4h source ~/shell-aliases
 
 # Use additional Git repositories pulled in with `z4h install`.
 #
