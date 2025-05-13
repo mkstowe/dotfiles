@@ -3,7 +3,7 @@
     "output": "DP-1",
     "position": "top",
     "include": ["~/.config/waybar/defaults.json"],
-    "height": 50,
+    "height": 62,
     "margin": "16 32 0",
     "modules-left": ["custom/media-player"],
     "modules-center": ["hyprland/workspaces"],
@@ -13,8 +13,9 @@
     "output": "HDMI-A-1",
     "position": "top",
     "include": ["~/.config/waybar/defaults.json"],
-    "height": 50,
+    "height": 62,
     "margin": "16 32 0",
+    "modules-left": ["custom/volume"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["group/hardware"]
   }

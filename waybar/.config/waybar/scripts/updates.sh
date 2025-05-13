@@ -15,7 +15,7 @@ pkg_installed() {
     fi
 }
 
-aur=`yay -Qua | wc -l`
+aur=`paru -Qua | wc -l`
 ofc=`pacman -Qu | wc -l`
 
 upd=$(( aur + ofc ))
