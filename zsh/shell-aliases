@@ -55,7 +55,7 @@ alias grep="rg"
 alias g='rg'
 alias l='less'
 alias m='more'
-alias clip='wl-copy'
+alias clip='wl-copy 2>/dev/null'
 
 alias pacsearch='pacman -Ss'
 alias yasearch='yay -Ss'
