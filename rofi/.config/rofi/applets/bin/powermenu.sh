@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-## Author  : Aditya Shakya (adi1090x)
-## Github  : @adi1090x
-#
-## Applets : Power Menu
-
 # Import Current Theme
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
@@ -24,23 +19,23 @@ fi
 # Options
 layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
 if [[ "$layout" == 'NO' ]]; then
-	option_1=" Lock"
-	option_2=" Logout"
-	option_3=" Suspend"
-	option_4=" Hibernate"
-	option_5=" Reboot"
-	option_6=" Shutdown"
-	yes=' Yes'
-	no=' No'
+	option_1=" Lock"
+	option_2=" Logout"
+	option_3=" Suspend"
+	option_4=" Hibernate"
+	option_5=" Reboot"
+	option_6=" Shutdown"
+	yes='󰄴 Yes'
+	no='󰜺 No'
 else
-	option_1=""
-	option_2=""
-	option_3=""
-	option_4=""
-	option_5=""
-	option_6=""
-	yes=''
-	no=''
+	option_1=""
+	option_2="󰍃"
+	option_3=""
+	option_4=""
+	option_5=""
+	option_6=""
+	yes='󰄴'
+	no='󰜺'
 fi
 
 # Rofi CMD
