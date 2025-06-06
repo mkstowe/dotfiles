@@ -57,6 +57,9 @@ alias l='less'
 alias m='more'
 alias clip='wl-copy 2>/dev/null'
 
+alias update-system='sudo pacman -Syu && paru -Sua && flatpak update'
+
+
 alias pacsearch='pacman -Ss'
 alias yasearch='yay -Ss'
 
