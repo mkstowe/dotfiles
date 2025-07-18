@@ -17,6 +17,8 @@ local options = {
     dockerfile = { "dockfmt" },
     python = { "black" },
     sql = { "sql-formatter" },
+    c = { "clang-format" },
+    cpp = { "clang-format" }
   },
 }
 

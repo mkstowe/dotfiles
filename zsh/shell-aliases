@@ -111,3 +111,15 @@ alias pasu='paru -Syu --no-confirm'             # Upgrade all, no prompts
 alias paup='paru -Syu'                          # Synced system upgrade
 
 alias stowe='stow'
+alias calc='qalc'
+
+trash() {
+  if [[ "$1" == "-f" || "$1" == "-rf" ]]; then
+    shift
+    /usr/bin/rm -rf "$@"
+  else
+    command trash-put "$@"
+  fi
+}
+alias rm='trash'
+

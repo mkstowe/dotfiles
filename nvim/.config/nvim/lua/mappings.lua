@@ -74,7 +74,7 @@ map({ "n", "v", "i" }, "<C-a>", "ggVG", { desc = "Select all" })
 -- Undo/Redo
 map({ "n", "v", "i" }, "<C-z>", "u", { desc = "Undo" })
 map({ "n", "v", "i" }, "<C-S-z>", "<C-r>", { desc = "Redo" })
-map({ "n", "v", "i" }, "U", "<C-r>", { desc = "Redo" })
+map({ "n", "v" }, "U", "<C-r>", { desc = "Redo" })
 
 -- Tabs
 map("n", "<leader><tab><tab>", "<cmd>tabnew<CR>", { desc = "New tab" })
