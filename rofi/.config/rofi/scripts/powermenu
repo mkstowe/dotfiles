@@ -1,0 +1,74 @@
+#!/usr/bin/env sh
+
+power_off=''
+reboot=''
+lock=''
+suspend='󰏤'
+log_out='󰍃'
+
+ROFI="$(command -v rofi-wayland || command -v rofi)"
+CONFIG="$HOME/.config/rofi/common/config.rasi"
+THEME="$HOME/.config/rofi/profiles/powermenu.rasi"
+PROMPT_THEME="$HOME/.config/rofi/profiles/popup.rasi"
+
+confirm() {
+  # Returns 0 on Yes, 1 otherwise
+  choice="$(
+    printf ';\n' |
+      "$ROFI" -dmenu -sep ';' -selected-row 0 -p "$1" \
+        -config "$CONFIG" \
+        -theme  "$PROMPT_THEME"
+  )"
+  [ "$choice" = "" ]
+}
+
+lock_cmd() {
+  if command -v hyprlock >/dev/null 2>&1; then
+    hyprlock
+  elif command -v swaylock >/dev/null 2>&1; then
+    swaylock --config "$HOME/.cache/wal/swaylock" 2>/dev/null || swaylock
+  elif command -v loginctl >/dev/null 2>&1; then
+    loginctl lock-session "${XDG_SESSION_ID:-self}"
+  fi
+}
+
+logout_cmd() {
+  if command -v hyprctl >/dev/null 2>&1; then
+    hyprctl dispatch exit 0
+  elif command -v swaymsg >/dev/null 2>&1; then
+    swaymsg exit
+  elif command -v loginctl >/dev/null 2>&1; then
+    loginctl terminate-user "$USER"
+  fi
+}
+
+chosen="$(
+  printf '%s;%s;%s;%s;%s\n' "$power_off" "$reboot" "$lock" "$suspend" "$log_out" |
+    "$ROFI" \
+      -config "$CONFIG" \
+      -theme  "$THEME" \
+      -dmenu \
+      -sep ';' \
+      -selected-row 0 \
+      -p "Power"
+)"
+
+case "$chosen" in
+  "$power_off")
+    confirm "Shutdown?" && systemctl poweroff
+    ;;
+  "$reboot")
+    confirm "Reboot?" && systemctl reboot
+    ;;
+  "$lock")
+    lock_cmd
+    ;;
+  "$suspend")
+    confirm "Suspend?" && systemctl suspend
+    ;;
+  "$log_out")
+    confirm "Logout?" && logout_cmd
+    ;;
+  *) exit 1 ;;
+esac
+

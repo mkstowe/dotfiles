@@ -1,0 +1,57 @@
+@import "../common/base.rasi"
+
+* {
+  background-color: @bg;
+}
+
+window {
+  fullscreen: false;
+  location: south;
+  anchor:   south;
+  border-radius: 16px;
+  margin: 0 0 50px 0;
+  width: 648px;
+  height: 180px;
+}
+
+listview { 
+  fixed-height: true;
+  dynamic: false;
+  layout: horizontal;
+  spacing: 18px;
+  scrollbar: false;
+}
+
+prompt, inputbar, message, mode-switcher {
+  enabled: false;
+}
+
+element {
+  children: [ element-text ];
+  width: 110px;
+  padding: 31px 0px;
+  border-radius: 14px;
+}
+
+element selected {
+  background-color: @bg;
+  border: 3px solid;
+  border-color: @accent;
+}
+
+element-text selected {
+  background-color: @bg;
+  color: @accent;
+}
+
+element-text {
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+  color: @fg;
+  font: "Symbols Nerd Font 32";
+}
+
+element-icon {
+  enabled: false;
+}
+

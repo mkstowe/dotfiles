@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+exec rofi -config "$HOME/.config/rofi/common/config.rasi" \
+          -theme "$HOME/.config/rofi/profiles/fullscreen.rasi" \
+          -show drun
+

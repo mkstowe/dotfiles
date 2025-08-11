@@ -3,6 +3,10 @@
     foreground: {foreground};
     fg: {foreground};
     bg: {background};
+    primary: {color3};
+    accent: {color14};
+    muted: {color6};
+
 
     color1: {color1};
     color2: {color2};

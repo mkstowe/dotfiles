@@ -125,3 +125,5 @@ alias del='trash'
 alias rm='echo "use del instead"'
 alias roll='/home/mkstowe/bin/rolldice.sh'
 alias rolldice='/home/mkstowe/bin/rolldice.sh'
+
+alias cd..='cd ..'

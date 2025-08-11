@@ -1,0 +1,32 @@
+@import "~/.cache/wal/colors-rofi.rasi"
+
+/* Dark, muted shared theme */
+* {
+  font: "CaskaydiaCove Nerd Font 14";
+}
+
+window {
+  transparency: "real";
+  background-color: @bg;
+  border: 2px;
+  border-color: @muted;
+}
+
+mainbox { spacing: 8px; padding: 10px; }
+
+inputbar { spacing: 8px; }
+prompt { text-color: @muted; }
+entry {
+  expand: true;
+  padding: 8px 12px;
+  border: 1px;
+  border-color: @muted;
+  border-radius: 10px;
+}
+
+listview { spacing: 4px; dynamic: true; scrollbar: false; }
+element { padding: 8px 10px; text-color: @fg; }
+element-icon { size: 20px; }
+element selected { background-color: @primary; text-color: @bg; border-radius: 8px; }
+message { text-color: @muted; }
+

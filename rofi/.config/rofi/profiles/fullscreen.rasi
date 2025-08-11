@@ -1,0 +1,56 @@
+@import "../common/base.rasi"
+
+* {
+  background-color: @bg;
+}
+
+window {
+  fullscreen: true;
+  border: 0;
+}
+
+mainbox { 
+  padding: 400px 1000px; 
+}
+
+listview { 
+  lines: 20; 
+  columns: 1; 
+  margin: 10px 0; 
+}
+
+prompt {
+  enabled: false;
+}
+
+inputbar {
+}
+
+entry {
+  background-color: @bg;
+  border: 0;
+  color: @muted;
+}
+
+element {
+  padding: 15px 0px 15px 15px;
+}
+
+element selected {
+  background-color: @bg;
+  border: 2px solid;
+  border-color: @accent;
+}
+
+element-text selected {
+  background-color: @bg;
+  color: @accent;
+}
+
+element-text {
+  color: @fg;
+}
+
+element-icon {
+  enabled: false;
+}

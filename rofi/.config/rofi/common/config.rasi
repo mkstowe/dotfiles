@@ -1,0 +1,12 @@
+configuration {
+  modi:               "drun,run,window,ssh";
+  show-icons:         true;
+  icon-theme:         "Papirus-Dark";
+  matching:           "fuzzy";
+  sorting-method:     "fzf";
+  case-sensitive:     false;
+  terminal:           "kitty";    /* change if needed */
+  drun-display-format: "{icon} {name}";
+  drun-match-fields:   "name,generic,exec,categories,keywords";
+}
+
