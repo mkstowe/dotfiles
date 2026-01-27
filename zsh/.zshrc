@@ -49,6 +49,7 @@ source ${ZIM_HOME}/init.zsh
 
 # Keep personal customizations in zshrc (zimrc is for modules)
 [[ -r ~/shell-aliases ]] && source ~/shell-aliases
+[[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # export GPG_TTY="$TTY"
 export PROJECT_HOME="$HOME/projects"
