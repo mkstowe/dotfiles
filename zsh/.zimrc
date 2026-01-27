@@ -38,10 +38,8 @@ zmodule hlissner/zsh-autopair
 zmodule MichaelAquilina/zsh-auto-notify
 zmodule MichaelAquilina/zsh-you-should-use
 zmodule MikeDacre/careful_rm
-zmodule peterhurford/up.zsh
 zmodule shanwker1223/zim-alias-finder
 zmodule joknarf/seedee
-zmodule Tarrasch/zsh-command-not-found
 zmodule Schniz/fnm
 zmodule wfxr/forgit
 zmodule romkatv/powerlevel10k --use degit
@@ -51,13 +49,11 @@ zmodule romkatv/powerlevel10k --use degit
 # (Loaded AFTER completion so compdef is available.)
 #
 zmodule ohmyzsh/ohmyzsh --root plugins/aliases
-zmodule ohmyzsh/ohmyzsh --root plugins/archlinux
 zmodule ohmyzsh/ohmyzsh --root plugins/colorize
 zmodule ohmyzsh/ohmyzsh --root plugins/command-not-found
 zmodule ohmyzsh/ohmyzsh --root plugins/dirhistory
 zmodule ohmyzsh/ohmyzsh --root plugins/docker
 zmodule ohmyzsh/ohmyzsh --root plugins/docker-compose
-zmodule ohmyzsh/ohmyzsh --root plugins/encode64
 zmodule ohmyzsh/ohmyzsh --root plugins/extract
 zmodule ohmyzsh/ohmyzsh --root plugins/ng
 zmodule ohmyzsh/ohmyzsh --root plugins/nvm
