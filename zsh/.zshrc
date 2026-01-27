@@ -1,148 +1,105 @@
-# Persona Zsh configuration file. It is strongly recommended to keep all
-# shell customization and configuration (including exported environment
-# variables such as PATH) in this file or in files sourced from it.
-#
-# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
+# -------------------------
+# Interactive shell settings
+# -------------------------
 
-# Periodic auto-update on Zsh startup: 'ask' or 'no'.
-# You can manually run `z4h update` to update everything.
-zstyle ':z4h:' auto-update      'ask'
-# Ask whether to auto-update this often; has no effect if auto-update is 'no'.
-zstyle ':z4h:' auto-update-days '28'
+# History: remove older command if a duplicate is added
+setopt HIST_IGNORE_ALL_DUPS
 
-# Keyboard type: 'mac' or 'pc'.
-zstyle ':z4h:bindkey' keyboard  'pc'
+# Remove path separator from WORDCHARS (better word motions)
+WORDCHARS=${WORDCHARS//[\/]}
 
-# Don't start tmux.
-zstyle ':z4h:' start-tmux       no
+# ---------------------------
+# Zim + module configuration
+# ---------------------------
 
-# Mark up shell's output with semantic information.
-zstyle ':z4h:' term-shell-integration 'yes'
+# zsh-autosuggestions: don't rebind widgets every precmd (faster)
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-# Right-arrow key accepts one character ('partial-accept') from
-# command autosuggestions or the whole thing ('accept')?
-zstyle ':z4h:autosuggestions' forward-char 'accept'
+# zsh-syntax-highlighting: choose highlighters
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Recursively traverse directories when TAB-completing files.
-zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+# -------------------------
+# Initialize Zim Framework
+# -------------------------
 
-# Enable direnv to automatically source .envrc files.
-zstyle ':z4h:direnv'         enable 'no'
-# Show "loading" and "unloading" notifications from direnv.
-zstyle ':z4h:direnv:success' notify 'yes'
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
-# Enable ('yes') or disable ('no') automatic teleportation of z4h over
-# SSH when connecting to these hosts.
-zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
-zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
-# The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'                   enable 'no'
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
 
-# Send these files over to the remote host when connecting over SSH to the
-# enabled hosts.
-zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
+# Install missing modules and (re)generate init.zsh if needed.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
+fi
 
-# Clone additional Git repositories from GitHub.
-#
-# This doesn't do anything apart from cloning the repository and keeping it
-# up-to-date. Cloned files can be used after `z4h init`. This is just an
-# example. If you don't plan to use Oh My Zsh, delete this line.
-z4h install ohmyzsh/ohmyzsh || return
+# Load modules.
+source ${ZIM_HOME}/init.zsh
 
-# Install or update core components (fzf, zsh-autosuggestions, etc.) and
-# initialize Zsh. After this point console I/O is unavailable until Zsh
-# is fully initialized. Everything that requires user interaction or can
-# perform network I/O must be done above. Everything else is best done below.
-z4h init || return
+# ----------------
+# User environment
+# ----------------
 
-# Extend PATH.
-path=(~/bin $path)
-path=(~/.local/bin $path)
+# Keep personal customizations in zshrc (zimrc is for modules)
+[[ -r ~/shell-aliases ]] && source ~/shell-aliases
 
-# Export environment variables.
-export GPG_TTY=$TTY
-export PROJECT_HOME=$HOME/projects
-export EDITOR=lvim
+# export GPG_TTY="$TTY"
+export PROJECT_HOME="$HOME/projects"
+export EDITOR="lvim"
 
-# Source additional local files if they exist.
-z4h source ~/.env.zsh
-z4h source ~/shell-aliases
+# -------------------------
+# Shell options / behavior
+# -------------------------
 
-# Use additional Git repositories pulled in with `z4h install`.
-#
-z4h load MikeDacre/careful_rm
-z4h load Bhupesh-V/ugit
-z4h load peterhurford/up.zsh
-z4h load MichaelAquilina/zsh-auto-notify
-z4h load hlissner/zsh-autopair
-z4h load ianthehenry/zsh-autoquoter
-z4h load MichaelAquilina/zsh-you-should-use
-z4h load ohmyzsh/ohmyzsh/plugins/aliases
-z4h load ohmyzsh/ohmyzsh/plugins/archlinux
-z4h load ohmyzsh/ohmyzsh/plugins/colorize
-z4h load ohmyzsh/ohmyzsh/plugins/command-not-found
-z4h load ohmyzsh/ohmyzsh/plugins/cp
-z4h load ohmyzsh/ohmyzsh/plugins/dirhistory
-z4h load ohmyzsh/ohmyzsh/plugins/docker
-z4h load ohmyzsh/ohmyzsh/plugins/docker-compose
-z4h load ohmyzsh/ohmyzsh/plugins/encode64
-z4h load ohmyzsh/ohmyzsh/plugins/extract
-z4h load ohmyzsh/ohmyzsh/plugins/fd
-z4h load ohmyzsh/ohmyzsh/plugins/ng
-z4h load ohmyzsh/ohmyzsh/plugins/nvm
-z4h load ohmyzsh/ohmyzsh/plugins/pip
-z4h load ohmyzsh/ohmyzsh/plugins/rg
-z4h load ohmyzsh/ohmyzsh/plugins/safe-paste
-z4h load ohmyzsh/ohmyzsh/plugins/systemd
+setopt glob_dots
+setopt no_auto_menu
 
-# Define key bindings.
-z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
-z4h bindkey z4h-backward-kill-zword Ctrl+Alt+Backspace
+# -------------------------
+# Functions & completions
+# -------------------------
 
-z4h bindkey undo Ctrl+/ Shift+Tab  # undo the last command line change
-z4h bindkey redo Alt+/             # redo the last undone command line change
+md() {
+  [[ $# == 1 ]] || return 1
+  mkdir -p -- "$1" && cd -- "$1"
+}
+# Needs completion initialized (provided by Zim completion module)
+(( $+functions[compdef] )) && compdef _directories md
 
-z4h bindkey z4h-cd-back    Alt+Left   # cd into the previous directory
-z4h bindkey z4h-cd-forward Alt+Right  # cd into the next directory
-z4h bindkey z4h-cd-up      Alt+Up     # cd into the parent directory
-z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory
-
-# Autoload functions.
-autoload -Uz zmv
-
-# Define functions and completions.
-function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
-compdef _directories md
-
-function keep_delete() {
+keep_delete() {
   if [[ $# -eq 0 ]]; then
     echo "Usage: keep_delete item1 item2 ..."
     return 1
   fi
 
-  local keep_set=("$@")
-  local item
-  local to_delete=()
+  local -a keep_set to_delete
+  keep_set=("$@")
 
+  local item
   for item in *; do
-    if [[ ! " ${keep_set[@]} " =~ " ${item} " ]]; then
+    # robust exact-match check
+    if (( ${keep_set[(I)$item]} == 0 )); then
       to_delete+=("$item")
     fi
   done
 
-  if [[ ${#to_delete[@]} -eq 0 ]]; then
+  if (( ${#to_delete[@]} == 0 )); then
     echo "Nothing to delete."
     return 0
   fi
 
-  echo "This will delete:"
-  for item in "${to_delete[@]}"; do
-    echo "  $item"
-  done
-
-  echo "Are you sure? (y/N)"
+  print -r -- "This will delete:"
+  print -r -- "  ${to_delete[@]}"
+  printf "Are you sure? (y/N) "
   read -r ans
-  if [[ "$ans" =~ ^[Yy]$ ]]; then
+
+  if [[ $ans == [Yy] ]]; then
     rm -rf -- "${to_delete[@]}"
     echo "Deleted."
   else
@@ -150,31 +107,13 @@ function keep_delete() {
   fi
 }
 
-# Define named directories: ~w <=> Windows home directory on WSL.
-[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+# -------------------------
+# External tool integrations
+# -------------------------
 
-# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
-setopt glob_dots     # no special treatment for file names with a leading dot
-setopt no_auto_menu  # require an extra TAB press to open the completion menu
+# fasd (only if installed)
+(( $+commands[fasd] )) && eval "$(fasd --init auto)"
 
-eval "$(fasd --init auto)"
-eval $(thefuck --alias)
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-source <(ng completion script)
-#source ~/git/careful_rm/careful_rm.alias.sh
+# thefuck (only if installed) — quote output to avoid word-splitting
+(( $+commands[thefuck] )) && eval "$(thefuck --alias)"
 
-
-# Following line was automatically added by arttime installer
-export MANPATH=/home/mkstowe/.local/share/man:$MANPATH
-
-PATH=~/.console-ninja/.bin:$PATH
-
-
-
-# pnpm
-export PNPM_HOME="/home/mkstowe/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

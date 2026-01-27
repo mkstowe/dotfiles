@@ -1,0 +1,81 @@
+#
+# Zim configuration file
+# NOTE: This file is NOT sourced by zsh at startup. It is read by zimfw.
+#
+
+#
+# Core Zim modules (safe defaults / UX)
+#
+zmodule environment     # sane zsh options
+zmodule input           # keybindings for input events
+zmodule termtitle       # terminal title
+zmodule utility         # colored ls/grep/less + helpers
+
+#
+# Prompt (keep early; generally independent)
+#
+zmodule duration-info
+zmodule git-info
+zmodule prompt-pwd
+zmodule gitster
+
+#
+# Extra completion definitions (must be BEFORE `completion`)
+#
+zmodule zsh-users/zsh-completions --fpath src
+
+#
+# Initialize completion system (compinit/compdef live here)
+# Should come after anything that adds completion definitions to $fpath.
+#
+zmodule completion
+
+#
+# General third-party plugins (don’t require compdef)
+#
+zmodule Bhupesh-V/ugit
+zmodule hlissner/zsh-autopair
+zmodule MichaelAquilina/zsh-auto-notify
+zmodule MichaelAquilina/zsh-you-should-use
+zmodule MikeDacre/careful_rm
+zmodule peterhurford/up.zsh
+zmodule shanwker1223/zim-alias-finder
+zmodule joknarf/seedee
+zmodule Tarrasch/zsh-command-not-found
+zmodule Schniz/fnm
+zmodule wfxr/forgit
+
+#
+# Oh My Zsh plugins
+# (Loaded AFTER completion so compdef is available.)
+#
+zmodule ohmyzsh/ohmyzsh --root plugins/aliases
+zmodule ohmyzsh/ohmyzsh --root plugins/archlinux
+zmodule ohmyzsh/ohmyzsh --root plugins/colorize
+zmodule ohmyzsh/ohmyzsh --root plugins/command-not-found
+zmodule ohmyzsh/ohmyzsh --root plugins/dirhistory
+zmodule ohmyzsh/ohmyzsh --root plugins/docker
+zmodule ohmyzsh/ohmyzsh --root plugins/docker-compose
+zmodule ohmyzsh/ohmyzsh --root plugins/encode64
+zmodule ohmyzsh/ohmyzsh --root plugins/extract
+zmodule ohmyzsh/ohmyzsh --root plugins/ng
+zmodule ohmyzsh/ohmyzsh --root plugins/nvm
+zmodule ohmyzsh/ohmyzsh --root plugins/safe-paste
+zmodule ohmyzsh/ohmyzsh --root plugins/systemd
+
+# These are known to rely on compdef
+zmodule ohmyzsh/ohmyzsh --root plugins/cp
+zmodule ohmyzsh/ohmyzsh --root plugins/pip
+
+#
+# Must be initialized last
+#
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
+
+#
+# Styles / plugin config
+#
+zstyle ':zim:plugins:alias-finder' include-longer yes
+
