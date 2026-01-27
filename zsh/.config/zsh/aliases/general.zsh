@@ -1,5 +1,5 @@
 
-alias ez='lvim ~/.zshrc'
+alias ez='nvim ~/.zshrc'
 alias po='poweroff'
 alias sudo='sudo '
 alias ag='acs -g'
@@ -88,27 +88,6 @@ reddit() {
 }
 
 alias timer='arttime -k timer.custom'
-
-# Paru
-alias paconf='paru -Pg'                         # Show current paru config
-alias paclean='paru -Sc'                        # Clean unused cache/packages
-alias paclr='paru -Scc'                         # Clear all cache
-alias pain='paru -S'                            # Install package
-alias palocal='paru -U'                         # Install local package
-alias paindep='paru -S --asdeps'                # Install as dependency
-alias palinfo='paru -Qi'                        # Show info about installed package
-alias palsearch='paru -Qs'                      # Search local installed packages
-alias palist='paru -Qe'                         # List explicitly installed packages
-alias pamirr='paru -Syy'                        # Force refresh all mirrors
-alias paorph='paru -Qtd'                        # Remove orphaned packages
-alias pare='paru -R'                            # Remove package, keep config
-alias parem='paru -Rns'                         # Remove package + unneeded deps
-alias parepo='paru -Si'                         # Show remote package info
-alias parepos='paru -Ss'                        # Search remote packages
-alias paupd='paru -Sy'                          # Refresh package databases
-alias paupg='paru -Syu'                         # Full system upgrade
-alias pasu='paru -Syu --no-confirm'             # Upgrade all, no prompts
-alias paup='paru -Syu'                          # Synced system upgrade
 
 alias stowe='stow'
 alias calc='qalc'

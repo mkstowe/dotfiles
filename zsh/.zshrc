@@ -48,7 +48,15 @@ source ${ZIM_HOME}/init.zsh
 # ----------------
 
 # Keep personal customizations in zshrc (zimrc is for modules)
-[[ -r ~/shell-aliases ]] && source ~/shell-aliases
+for dir in aliases functions; do
+  d="$HOME/.config/zsh/$dir"
+  [[ -d $d ]] || continue
+  for file in "$d"/*.zsh(N-.); do
+    source "$file"
+  done
+done
+unset dir file d
+
 [[ -r ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # export GPG_TTY="$TTY"
@@ -74,6 +82,8 @@ md() {
 (( $+functions[compdef] )) && compdef _directories md
 
 keep_delete() {
+  setopt local_options null_glob
+
   if [[ $# -eq 0 ]]; then
     echo "Usage: keep_delete item1 item2 ..."
     return 1
@@ -115,6 +125,6 @@ keep_delete() {
 # fasd (only if installed)
 (( $+commands[fasd] )) && eval "$(fasd --init auto)"
 
-# thefuck (only if installed) — quote output to avoid word-splitting
+# thefuck (only if installed)
 (( $+commands[thefuck] )) && eval "$(thefuck --alias)"
 
