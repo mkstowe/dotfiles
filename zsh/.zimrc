@@ -43,6 +43,8 @@ zmodule joknarf/seedee
 zmodule Schniz/fnm
 zmodule wfxr/forgit
 zmodule romkatv/powerlevel10k --use degit
+zmodule IngoMeyer441/zsh-easy-motion
+zmodule zdharma-continuum/fast-syntax-highlighting
 
 #
 # Oh My Zsh plugins

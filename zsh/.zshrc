@@ -61,12 +61,13 @@ unset dir file d
 
 # export GPG_TTY="$TTY"
 export PROJECT_HOME="$HOME/projects"
-export EDITOR="lvim"
+export EDITOR="nvim"
 
 # -------------------------
 # Shell options / behavior
 # -------------------------
 
+bindkey -v
 setopt glob_dots
 setopt no_auto_menu
 
