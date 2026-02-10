@@ -29,9 +29,9 @@ alias npmg='npm i -g'
 alias npmr='npm run'
 alias npmd='npm i -D'
 
-alias ls='ls -Fsh1 --color=auto'
-alias lsa='ls -AFsh1 --color=auto'
-alias lsl='ls -AFosh1 --color=auto'
+# alias ls='ls -Fsh1 --color=auto'
+# alias lsa='ls -AFsh1 --color=auto'
+# alias lsl='ls -AFosh1 --color=auto'
 
 alias showip='hostname -i'
 
@@ -53,8 +53,6 @@ alias help='man'
 alias p='ps -f'
 alias grep="rg"
 alias g='rg'
-alias l='less'
-alias m='more'
 alias clip='wl-copy 2>/dev/null'
 
 alias update-system='sudo pacman -Syu && paru -Sua && flatpak update'

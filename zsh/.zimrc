@@ -45,6 +45,7 @@ zmodule wfxr/forgit
 zmodule romkatv/powerlevel10k --use degit
 zmodule IngoMeyer441/zsh-easy-motion
 zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule jeffreytse/zsh-vi-mode
 
 #
 # Oh My Zsh plugins
@@ -54,7 +55,6 @@ zmodule ohmyzsh/ohmyzsh --root plugins/aliases
 zmodule ohmyzsh/ohmyzsh --root plugins/colorize
 zmodule ohmyzsh/ohmyzsh --root plugins/command-not-found
 zmodule ohmyzsh/ohmyzsh --root plugins/dirhistory
-zmodule ohmyzsh/ohmyzsh --root plugins/docker
 zmodule ohmyzsh/ohmyzsh --root plugins/docker-compose
 zmodule ohmyzsh/ohmyzsh --root plugins/extract
 zmodule ohmyzsh/ohmyzsh --root plugins/ng

@@ -9,10 +9,10 @@ alias rgc='rg -C 3 --smart-case'
 alias rgt='rg -g --smart-case'
 
 alias fd='fd -H --follow'
-alias fdf='fd -H --follow -t f'
-alias fdd='fd -H --follow -t d'
-alias fde='fd -H --follow -e'
-alias fdi='fd -uu'
+alias fdf='fd --color always -H --follow -t f'
+alias fdd='fd --color always -H --follow -t d'
+alias fde='fd --color always -H --follow -e'
+alias fdi='fd --color always -uu'
 
 alias fzf='fzf --height 40% --layout=reverse --border'
 

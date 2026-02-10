@@ -62,62 +62,17 @@ unset dir file d
 # export GPG_TTY="$TTY"
 export PROJECT_HOME="$HOME/projects"
 export EDITOR="nvim"
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 # -------------------------
 # Shell options / behavior
 # -------------------------
 
 bindkey -v
+# Fix Delete key in vi insert mode
+bindkey -M viins '^[[3~' delete-char
+
 setopt glob_dots
-setopt no_auto_menu
-
-# -------------------------
-# Functions & completions
-# -------------------------
-
-md() {
-  [[ $# == 1 ]] || return 1
-  mkdir -p -- "$1" && cd -- "$1"
-}
-# Needs completion initialized (provided by Zim completion module)
-(( $+functions[compdef] )) && compdef _directories md
-
-keep_delete() {
-  setopt local_options null_glob
-
-  if [[ $# -eq 0 ]]; then
-    echo "Usage: keep_delete item1 item2 ..."
-    return 1
-  fi
-
-  local -a keep_set to_delete
-  keep_set=("$@")
-
-  local item
-  for item in *; do
-    # robust exact-match check
-    if (( ${keep_set[(I)$item]} == 0 )); then
-      to_delete+=("$item")
-    fi
-  done
-
-  if (( ${#to_delete[@]} == 0 )); then
-    echo "Nothing to delete."
-    return 0
-  fi
-
-  print -r -- "This will delete:"
-  print -r -- "  ${to_delete[@]}"
-  printf "Are you sure? (y/N) "
-  read -r ans
-
-  if [[ $ans == [Yy] ]]; then
-    rm -rf -- "${to_delete[@]}"
-    echo "Deleted."
-  else
-    echo "Aborted."
-  fi
-}
 
 # -------------------------
 # External tool integrations
