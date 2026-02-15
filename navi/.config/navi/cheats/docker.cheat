@@ -1,0 +1,16 @@
+% docker
+
+# List all images that are locally stored with the Docker engine
+docker images
+
+# List networks
+docker network ls
+
+# List running containers
+docker ps
+
+# Print the last lines of a container's logs
+docker logs --tail 100 <container_id> | less
+
+$ container_id: docker ps --- --headers 1 --column 1
+

@@ -1,0 +1,12 @@
+% shell
+
+# Create symlink
+ln -s <source-dirname> <destination-dirname>
+
+# Update symlink
+ln -sfn <source-dirname> <destination-dirname>
+
+# Remove symlink
+unlink <sample-dirname>
+
+

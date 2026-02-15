@@ -78,3 +78,27 @@ touch() {
     command touch "$arg"
   done
 }
+
+trash() {
+  if [[ "$1" == "-f" || "$1" == "-rf" ]]; then
+    shift
+    /usr/bin/rm -rf "$@"
+  else
+    command trash-put "$@"
+  fi
+}
+
+# Completion for the `trash` function: allow unlimited files/dirs
+_trash() {
+  _arguments -s \
+    '(-f -r -rf)--[stop option parsing]' \
+    '(-f -r -rf)-f[force remove]' \
+    '(-f -r -rf)-r[recursive]' \
+    '(-f -r -rf)-rf[recursive + force]' \
+    '*:path:_files'
+}
+
+compdef _trash trash
+
+
+alias del='trash'

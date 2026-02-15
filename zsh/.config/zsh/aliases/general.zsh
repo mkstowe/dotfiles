@@ -4,24 +4,6 @@ alias po='poweroff'
 alias sudo='sudo '
 alias ag='acs -g'
 
-# Git
-alias gs='git status'
-alias ga='git add'
-alias gaa='git add --all'
-alias gA='git add --all'
-alias gd='git add .'
-alias gpush='git push'
-alias gpull='git pull'
-
-alias dots='git --git-dir $HOME/dotfiles/ --work-tree=$HOME'
-alias ds='git --git-dir $HOME/dotfiles/ --work-tree=$HOME status'
-alias da='git --git-dir $HOME/dotfiles/ --work-tree=$HOME add'
-alias dp='git --git-dir $HOME/dotfiles/ --work-tree=$HOME push'
-
-dc() {
-  git --git-dir $HOME/dotfiles/ --work-tree=$HOME commit -m $1
-}
-
 # NPM
 alias npmi='npm i'
 alias ni='npm i'
@@ -29,13 +11,8 @@ alias npmg='npm i -g'
 alias npmr='npm run'
 alias npmd='npm i -D'
 
-# alias ls='ls -Fsh1 --color=auto'
-# alias lsa='ls -AFsh1 --color=auto'
-# alias lsl='ls -AFosh1 --color=auto'
-
 alias showip='hostname -i'
 
-#alias rm='~/.local/bin/careful_rm.py -c'
 alias mv='mv -vi'
 alias cp='cp -vir'
 
@@ -56,10 +33,6 @@ alias g='rg'
 alias clip='wl-copy 2>/dev/null'
 
 alias update-system='sudo pacman -Syu && paru -Sua && flatpak update'
-
-
-alias pacsearch='pacman -Ss'
-alias yasearch='yay -Ss'
 
 alias mkdir='mkdir -p'
 
@@ -90,17 +63,9 @@ alias timer='arttime -k timer.custom'
 alias stowe='stow'
 alias calc='qalc'
 
-trash() {
-  if [[ "$1" == "-f" || "$1" == "-rf" ]]; then
-    shift
-    /usr/bin/rm -rf "$@"
-  else
-    command trash-put "$@"
-  fi
-}
-alias del='trash'
 alias rm='echo "use del instead"'
 alias roll='/home/mkstowe/bin/rolldice.sh'
 alias rolldice='/home/mkstowe/bin/rolldice.sh'
 
 alias cd..='cd ..'
+alias S='sudo !!'

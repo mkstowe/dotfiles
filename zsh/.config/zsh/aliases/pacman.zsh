@@ -19,3 +19,4 @@ alias pacls='pacman -Ql'
 alias pacown='pacman -Qo'
 alias pacupd="sudo pacman -Sy"
 alias pacmanallkeys='sudo pacman-key --refresh-keys'
+alias pacsearch='pacman -Ss'
