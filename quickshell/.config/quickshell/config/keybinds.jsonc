@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "configVersion": 1,
+    "schema": "quickshell.keybinds"
+  },
+
+  "global": [
+    {
+      "id": "toggle-launcher",
+      "description": "Toggle launcher",
+      "combo": "SUPER+SPACE",
+      "action": { "type": "ui.toggle", "target": "launcher" }
+    },
+    {
+      "id": "reload-shell",
+      "description": "Reload quickshell",
+      "combo": "SUPER+SHIFT+R",
+      "action": { "type": "shell.reload" }
+    }
+  ],
+
+  "media": [
+    {
+      "id": "volume-up",
+      "description": "Volume up",
+      "combo": "XF86AudioRaiseVolume",
+      "action": { "type": "audio.volume", "delta": 5 }
+    },
+    {
+      "id": "volume-down",
+      "description": "Volume down",
+      "combo": "XF86AudioLowerVolume",
+      "action": { "type": "audio.volume", "delta": -5 }
+    },
+    {
+      "id": "volume-mute",
+      "description": "Toggle mute",
+      "combo": "XF86AudioMute",
+      "action": { "type": "audio.muteToggle" }
+    }
+  ]
+}

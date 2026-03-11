@@ -1,0 +1,103 @@
+{
+  "theme": {
+    "palette": "earth"
+  },
+  "ui": {
+    "borderWidth": 1
+  },
+  "bar": {
+    "enabled": true,
+    "height": 48,
+    "margins": {
+      "top": 10,
+      "right": 12,
+      "left": 12
+    },
+    "padding": {
+      "x": 10
+    },
+    "cornerRadius": 14,
+    "opacity": 0.92
+  },
+  "widgets": {
+    "dateTime": {
+      "showSeconds": false,
+      "separator": " | ",
+      "visibleOn": [
+        "DP-1"
+      ]
+    },
+    "pacmanUpdates": {
+      "pollInterval": 1800000, // ms
+      "showAur": true,
+      "aurHelper": "paru", // paru | yay
+      "labelMode": "total", // total | split
+      "visibleOn": [
+        "HDMI-A-1"
+      ]
+    },
+    "volume": {
+      "step": 5,
+      "showPercent": true,
+      "visibleOn": [
+        "DP-1",
+        "HDMI-A-1"
+      ]
+    },
+    "notifications": {
+      "showCount": true,
+      "hideWhenZero": true,
+      "intervalMs": 2000,
+      "visibleOn": [
+        "HDMI-A-1"
+      ]
+    },
+    "network": {
+      "showStatus": false,
+      "visibleOn": [
+        "HDMI-A-1"
+      ]
+    },
+    "weather": {
+      "showText": true,
+      "intervalMs": 600000,
+      "location": "GrandRapids",
+      "visibleOn": [
+        "HDMI-A-1"
+      ]
+    },
+    "workspaces": {
+      "visibleOn": [
+        "DP-1",
+        "HDMI-A-1"
+      ]
+    },
+    "media": {
+      "placeholder": "-",
+      "maxTextWidth": 425,
+      "visibleOn": ["DP-1"],
+      "player": ""
+    }
+  },
+  "workspaces": {
+    "byMonitor": {
+      "DP-1": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "HDMI-A-1": [
+        11,
+        12,
+        13
+      ]
+    }
+  }
+}

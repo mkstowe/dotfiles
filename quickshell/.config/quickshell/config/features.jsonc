@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "configVersion": 1,
+    "schema": "quickshell.features"
+  },
+
+  "bar": true,
+  "launcher": true,
+  "settingsPanel": false,
+  "osd": false,
+  "notifications": true,
+
+  "integrations": {
+    "hyprland": true,
+    "mpris": true,
+    "network": true,
+    "audio": true,
+    "power": true
+  }
+}

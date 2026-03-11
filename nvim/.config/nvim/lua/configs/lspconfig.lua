@@ -1,8 +1,4 @@
 local default_config = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
-
--- capabilities shared with nvim-cmp
-local capabilities = default_config.capabilities
 
 local servers = {
   "html",
@@ -22,13 +18,15 @@ local servers = {
   "tailwindcss",
   "ts_ls",
   "yamlls",
-  "clangd"
+  "clangd",
+  "qmlls",
 }
-vim.lsp.enable(servers)
 
 for _, server in ipairs(servers) do
-  lspconfig[server].setup {
-    capabilities = capabilities,
+  vim.lsp.config(server, {
+    capabilities = default_config.capabilities,
     on_attach = default_config.on_attach,
-  }
+  })
 end
+
+vim.lsp.enable(servers)

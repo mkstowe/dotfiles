@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "configVersion": 1,
+    "schema": "quickshell.theme.palette",
+    "name": "earth"
+  },
+
+  "dark": "#2B2A27",
+  "light": "#F2EDE3",
+  "muted": "#A89F91",
+  "primary": "#7A8C5A",
+  "secondary": "#8A6F5A",
+  "accent": "#C47A5A",
+  "success": "#6F8F6B",
+  "danger": "#B25A4A",
+  "warning": "#C9A24A",
+  "info": "#6A8F8B"
+}

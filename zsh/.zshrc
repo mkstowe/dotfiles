@@ -63,6 +63,7 @@ unset dir file d
 export PROJECT_HOME="$HOME/projects"
 export EDITOR="nvim"
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+export PATH="/usr/lib/qt6/bin:$PATH"
 
 # -------------------------
 # Shell options / behavior

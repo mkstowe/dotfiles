@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Quickshell",
+            "type": "shell",
+            "command": "quickshell -c ~/.config/quickshell",
+            "problemMatcher": []
+        }
+    ]
+}

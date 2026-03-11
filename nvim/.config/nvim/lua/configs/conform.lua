@@ -19,7 +19,8 @@ local options = {
     sql = { "sql-formatter" },
     c = { "clang-format" },
     cpp = { "clang-format" },
-    cs = { "csharpier" }
+    cs = { "csharpier" },
+    qml = { "qmlformat" }
   },
 }
 
