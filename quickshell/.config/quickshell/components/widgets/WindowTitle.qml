@@ -11,7 +11,7 @@ Item {
     property var screenObj
 
     property string title: "Desktop"
-    property bool showPill: true
+    readonly property bool showPill: widgetConfig.showPill ?? true
     property int maxWidth: 320
 
     readonly property var widgetConfig: stateObj?.settings?.widgets?.windowTitle ?? {}

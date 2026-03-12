@@ -23,11 +23,15 @@
     "dateTime": {
       "showSeconds": false,
       "separator": " | ",
+      "showPill": true,
+      "enableCalendarPopover": true,
+      "calendarWidth": 292,
       "visibleOn": [
         "DP-1"
       ]
     },
     "pacmanUpdates": {
+      "showPill": true,
       "pollInterval": 1800000, // ms
       "showAur": true,
       "aurHelper": "paru", // paru | yay
@@ -37,6 +41,7 @@
       ]
     },
     "volume": {
+      "showPill": true,
       "step": 5,
       "showPercent": true,
       "visibleOn": [
@@ -45,6 +50,7 @@
       ]
     },
     "notifications": {
+      "showPill": true,
       "showCount": true,
       "hideWhenZero": true,
       "intervalMs": 2000,
@@ -53,6 +59,7 @@
       ]
     },
     "network": {
+      "showPill": true,
       "showStatus": false,
       "visibleOn": [
         "HDMI-A-1"
@@ -60,6 +67,9 @@
     },
     "weather": {
       "showText": true,
+      "showPill": true,
+      "enableForecastPopover": true,
+      "forecastDays": 3,
       "intervalMs": 600000,
       "location": "GrandRapids",
       "visibleOn": [
@@ -67,12 +77,14 @@
       ]
     },
     "workspaces": {
+      "showPill": true,
       "visibleOn": [
         "DP-1",
         "HDMI-A-1"
       ]
     },
     "media": {
+      "showPill": true,
       "placeholder": "-",
       "maxTextWidth": 425,
       "visibleOn": ["DP-1"],

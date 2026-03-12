@@ -12,7 +12,7 @@ Item {
     property var styleObj
     property var screenObj
 
-    property bool showPill: true
+    readonly property bool showPill: widgetConfig.showPill ?? true
 
     readonly property var widgetConfig: stateObj?.settings?.widgets?.media ?? {}
     readonly property string placeholder: widgetConfig.placeholder ?? "-"

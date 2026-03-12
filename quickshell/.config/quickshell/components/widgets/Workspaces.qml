@@ -13,7 +13,7 @@ Item {
     property var styleObj
     property var screenObj
 
-    property bool showPill: true
+    readonly property bool showPill: widgetConfig.showPill ?? true
     property int pillHeight: styleObj ? styleObj.controlMinHeight + 4 : 32
     property int horizontalPadding: styleObj ? styleObj.pillPadX * 2 : 24
     property int workspaceSpacing: styleObj ? styleObj.sectionGap + 4 : 12

@@ -11,6 +11,8 @@ Item {
     property var themeObj
     property var styleObj
     property var screenObj
+    readonly property int forecastPanelHeight: weatherWidget?.forecastPanelHeight ?? 0
+    readonly property int forecastMaxPanelHeight: weatherWidget?.forecastMaxPanelHeight ?? 0
 
     implicitHeight: row.implicitHeight
     implicitWidth: row.implicitWidth
@@ -31,6 +33,7 @@ Item {
         }
 
         Widgets.Weather {
+            id: weatherWidget
             stateObj: root.stateObj
             themeObj: root.themeObj
             styleObj: root.styleObj

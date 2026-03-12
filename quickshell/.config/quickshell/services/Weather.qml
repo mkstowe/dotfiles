@@ -6,12 +6,14 @@ Item {
 
     property string location: ""
     property int intervalMs: 600000
+    property int forecastDaysCount: 3
 
     property string icon: "󰖙"
     property string displayText: "--"
     property string condition: ""
     property string temperature: ""
     property string conditionKey: "unknown"
+    property var forecastDays: []
 
     function update(text) {
         const trimmed = (text || "").trim()
@@ -92,6 +94,36 @@ Item {
     function refresh() {
         weatherProc.running = false
         weatherProc.running = true
+
+        forecastProc.running = false
+        forecastProc.running = true
+    }
+
+    function updateForecast(text) {
+        try {
+            const parsed = JSON.parse(text)
+            const days = parsed?.weather
+
+            if (!Array.isArray(days)) {
+                forecastDays = []
+                return
+            }
+
+            const limit = Math.max(1, Math.min(7, root.forecastDaysCount))
+            forecastDays = days.slice(0, limit).map(function(day) {
+                const hourly = Array.isArray(day?.hourly) && day.hourly.length > 0 ? day.hourly[4] : null
+
+                return {
+                    date: day?.date ?? "",
+                    maxTempF: day?.maxtempF ?? "--",
+                    minTempF: day?.mintempF ?? "--",
+                    summary: hourly?.weatherDesc?.[0]?.value ?? "--",
+                    rainChance: hourly?.chanceofrain ?? "0"
+                }
+            })
+        } catch (e) {
+            forecastDays = []
+        }
     }
 
     Process {
@@ -105,7 +137,7 @@ Item {
             return [
                 "bash",
                 "-lc",
-                "curl -s 'https://wttr.in" + suffix + "?format=%C,%t'"
+                "curl -s 'https://wttr.in" + suffix + "?format=%C,%t&u'"
             ]
         }
 
@@ -113,6 +145,29 @@ Item {
             splitMarker: "\n"
             onRead: function(data) {
                 root.update(data)
+            }
+        }
+    }
+
+    Process {
+        id: forecastProc
+
+        command: {
+            const suffix = root.location && root.location.length > 0
+                ? "/" + root.location
+                : ""
+
+            return [
+                "bash",
+                "-lc",
+                "curl -s 'https://wttr.in" + suffix + "?format=j1&u' | tr -d '\n'"
+            ]
+        }
+
+        stdout: SplitParser {
+            splitMarker: "\n"
+            onRead: function(data) {
+                root.updateForecast(data)
             }
         }
     }
