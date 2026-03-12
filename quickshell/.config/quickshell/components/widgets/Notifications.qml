@@ -11,7 +11,7 @@ Item {
     property var styleObj
     property var screenObj
 
-    property bool showPill: true
+    readonly property bool showPill: widgetConfig.showPill ?? true
 
     readonly property var widgetConfig: stateObj?.settings?.widgets?.notifications ?? {}
     readonly property bool showCount: widgetConfig.showCount ?? true

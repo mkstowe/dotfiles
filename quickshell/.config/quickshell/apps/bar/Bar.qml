@@ -11,6 +11,9 @@ PanelWindow {
     property var stateObj
     property var themeObj
 
+    readonly property int baseBarHeight: stateObj?.settings?.bar?.height ?? styles.barHeight
+    readonly property int expandedHeight: Math.max(leftSection?.forecastMaxPanelHeight ?? 0, rightSection?.calendarMaxPanelHeight ?? 0)
+
     screen: modelData
 
     BarParts.Styles {
@@ -28,8 +31,8 @@ PanelWindow {
         right: true
     }
 
-    implicitHeight: stateObj?.settings?.bar?.height ?? styles.barHeight
-    exclusiveZone: implicitHeight
+    implicitHeight: baseBarHeight + expandedHeight
+    exclusiveZone: baseBarHeight
 
     margins {
         top: stateObj?.settings?.bar?.margins?.top ?? 10
@@ -39,7 +42,10 @@ PanelWindow {
 
     Rectangle {
         id: bg
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: win.baseBarHeight
         radius: styles.barRadius
         color: styles.barBg
         border.color: styles.barBorder

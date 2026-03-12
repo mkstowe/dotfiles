@@ -11,6 +11,8 @@ Item {
     property var themeObj
     property var styleObj
     property var screenObj
+    readonly property int calendarPanelHeight: dateWidget?.calendarPanelHeight ?? 0
+    readonly property int calendarMaxPanelHeight: dateWidget?.calendarMaxPanelHeight ?? 0
 
     implicitHeight: row.implicitHeight
     implicitWidth: row.implicitWidth
@@ -52,6 +54,7 @@ Item {
         }
 
         Widgets.DateTime {
+            id: dateWidget
             stateObj: root.stateObj
             themeObj: root.themeObj
             styleObj: root.styleObj
