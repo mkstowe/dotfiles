@@ -25,6 +25,20 @@ Item {
         themeObj: root.themeObj
         styleObj: root.styleObj
 
+        Widgets.PowerMenuButton {
+            stateObj: root.stateObj
+            themeObj: root.themeObj
+            styleObj: root.styleObj
+            screenObj: root.screenObj
+        }
+
+        Widgets.LauncherButton {
+            stateObj: root.stateObj
+            themeObj: root.themeObj
+            styleObj: root.styleObj
+            screenObj: root.screenObj
+        }
+
         Widgets.Media {
             stateObj: root.stateObj
             themeObj: root.themeObj

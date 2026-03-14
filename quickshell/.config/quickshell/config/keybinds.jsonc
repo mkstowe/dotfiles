@@ -12,6 +12,18 @@
       "action": { "type": "ui.toggle", "target": "launcher" }
     },
     {
+      "id": "toggle-power-menu",
+      "description": "Toggle power menu",
+      "combo": "SUPER+ESCAPE",
+      "action": { "type": "ui.toggle", "target": "powerMenu" }
+    },
+    {
+      "id": "toggle-notification-history",
+      "description": "Toggle notification history",
+      "combo": "SUPER+N",
+      "action": { "type": "ui.toggle", "target": "notificationHistory" }
+    },
+    {
       "id": "reload-shell",
       "description": "Reload quickshell",
       "combo": "SUPER+SHIFT+R",

@@ -6,6 +6,7 @@
 
   "bar": true,
   "launcher": true,
+  "powerMenu": true,
   "settingsPanel": false,
   "osd": false,
   "notifications": true,

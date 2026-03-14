@@ -10,6 +10,7 @@ Item {
     property var themeObj
     property var styleObj
     property var screenObj
+    property var notificationServiceObj
 
     readonly property bool showPill: widgetConfig.showPill ?? true
 
@@ -20,14 +21,18 @@ Item {
     readonly property string monitorName: screenObj?.name ?? ""
     readonly property bool isVisibleOnThisMonitor: visibleOn.length === 0 || visibleOn.includes(monitorName)
 
+    readonly property var serviceRef: notificationServiceObj ? notificationServiceObj : localNotificationsService
+
     Services.Notifications {
-        id: notificationsService
-        intervalMs: widgetConfig.intervalMs ?? 2000
+        id: localNotificationsService
+        stateObj: root.stateObj
+        configObj: root.stateObj?.settings?.notificationsCenter ?? {}
+        visible: !root.notificationServiceObj
     }
 
-    readonly property bool hasNotifications: notificationsService.count > 0
+    readonly property bool hasNotifications: (serviceRef?.count ?? 0) > 0
     readonly property bool shouldShow: isVisibleOnThisMonitor && (!hideWhenZero || hasNotifications)
-    readonly property string displayText: root.showCount ? String(notificationsService.count) : ""
+    readonly property string displayText: root.showCount ? String(serviceRef?.count ?? 0) : ""
 
     visible: shouldShow
 
@@ -46,7 +51,7 @@ Item {
         Primitive.IconText {
             styleObj: root.styleObj
             themeObj: root.themeObj
-            icon: notificationsService.icon
+            icon: serviceRef?.icon ?? "󰂚"
             text: root.displayText
             textWeight: 600
             itemSpacing: styleObj ? styleObj.itemGap : (root.themeObj ? root.themeObj.space("xs", 6) : 6)
