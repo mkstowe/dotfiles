@@ -11,6 +11,7 @@ Item {
     property var themeObj
     property var styleObj
     property var screenObj
+    property var notificationsObj
     readonly property int calendarPanelHeight: dateWidget?.calendarPanelHeight ?? 0
     readonly property int calendarMaxPanelHeight: dateWidget?.calendarMaxPanelHeight ?? 0
 
@@ -37,6 +38,15 @@ Item {
             themeObj: root.themeObj
             styleObj: root.styleObj
             screenObj: root.screenObj
+            notificationServiceObj: root.notificationsObj
+        }
+
+        Widgets.NotificationHistoryButton {
+            stateObj: root.stateObj
+            themeObj: root.themeObj
+            styleObj: root.styleObj
+            screenObj: root.screenObj
+            notificationServiceObj: root.notificationsObj
         }
 
         Widgets.NetStatus {

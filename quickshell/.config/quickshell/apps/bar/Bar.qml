@@ -10,6 +10,7 @@ PanelWindow {
     property var modelData
     property var stateObj
     property var themeObj
+    property var notificationsObj
 
     readonly property int baseBarHeight: stateObj?.settings?.bar?.height ?? styles.barHeight
     readonly property int expandedHeight: Math.max(leftSection?.forecastMaxPanelHeight ?? 0, rightSection?.calendarMaxPanelHeight ?? 0)
@@ -98,6 +99,7 @@ PanelWindow {
                 themeObj: win.themeObj
                 styleObj: styles
                 screenObj: win.screen
+                notificationsObj: win.notificationsObj
             }
         }
     }

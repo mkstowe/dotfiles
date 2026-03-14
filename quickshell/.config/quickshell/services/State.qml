@@ -45,14 +45,95 @@ Item {
     readonly property string paletteName: (settings?.theme?.palette ?? "mountain")
     readonly property bool barEnabled: (features?.bar ?? true) && (settings?.bar?.enabled ?? true)
     readonly property bool launcherEnabled: (features?.launcher ?? true) && (settings?.launcher?.enabled ?? true)
+    readonly property bool powerMenuEnabled: (features?.powerMenu ?? true) && (settings?.powerMenu?.enabled ?? true)
+    readonly property bool notificationsHistoryEnabled: (features?.notifications ?? true) && (settings?.notificationsHistory?.enabled ?? true)
+
+    property bool launcherVisible: false
+    property string launcherScreen: ""
+    property bool powerMenuVisible: false
+    property string powerMenuScreen: ""
+    property bool notificationHistoryVisible: false
+    property string notificationHistoryScreen: ""
 
     signal configsReloaded
+
+    function openLauncherFor(screenName) {
+        closePowerMenu()
+        closeNotificationHistory()
+        launcherScreen = screenName || ""
+        launcherVisible = true
+    }
+
+    function closeLauncher() {
+        launcherVisible = false
+    }
+
+    function openPowerMenuFor(screenName) {
+        closeLauncher()
+        closeNotificationHistory()
+        powerMenuScreen = screenName || ""
+        powerMenuVisible = true
+    }
+
+    function closePowerMenu() {
+        powerMenuVisible = false
+    }
+
+    function openNotificationHistoryFor(screenName) {
+        closeLauncher()
+        closePowerMenu()
+        notificationHistoryScreen = screenName || ""
+        notificationHistoryVisible = true
+    }
+
+    function closeNotificationHistory() {
+        notificationHistoryVisible = false
+    }
+
+    function toggleLauncher(screenName) {
+        const normalized = screenName || ""
+        if (launcherVisible && launcherScreen === normalized)
+            closeLauncher()
+        else
+            openLauncherFor(normalized)
+    }
+
+    function togglePowerMenu(screenName) {
+        const normalized = screenName || ""
+        if (powerMenuVisible && powerMenuScreen === normalized)
+            closePowerMenu()
+        else
+            openPowerMenuFor(normalized)
+    }
+
+    function toggleNotificationHistory(screenName) {
+        const normalized = screenName || ""
+        if (notificationHistoryVisible && notificationHistoryScreen === normalized)
+            closeNotificationHistory()
+        else
+            openNotificationHistoryFor(normalized)
+    }
 
     function reloadAll() {
         defaultsFile.reload();
         featuresFile.reload();
         keybindsFile.reload();
         configsReloaded();
+    }
+
+    onLauncherEnabledChanged: {
+        if (!launcherEnabled)
+            closeLauncher()
+    }
+
+    onPowerMenuEnabledChanged: {
+        if (!powerMenuEnabled)
+            closePowerMenu()
+    }
+
+    onNotificationsHistoryEnabledChanged: {
+        if (!notificationsHistoryEnabled)
+            closeNotificationHistory()
     }
 
     function _readText(fileView) {

@@ -19,6 +19,83 @@
     "cornerRadius": 14,
     "opacity": 0.92
   },
+  "launcher": {
+    "enabled": true,
+    "padding": 36,
+    "panelWidthRatio": 0.5,
+    "minPanelWidth": 560,
+    "maxPanelWidth": 980,
+    "maxResults": 16,
+    "showComments": true,
+    "backdropOpacity": 0.5,
+    "placeholderText": "Search applications...",
+    "showBarButton": true,
+    "showBarButtonLabel": false,
+    "barButtonLabel": "Apps",
+    "barButtonIcon": "󰣆",
+    "visibleOn": [
+      "DP-1",
+      "HDMI-A-1"
+    ]
+  },
+  "powerMenu": {
+    "enabled": true,
+    "panelWidth": 440,
+    "panelHeight": 96,
+    "bottomOffset": 24,
+    "buttonSize": 64,
+    "buttonGap": 16,
+    "iconSize": 26,
+    "requireConfirmation": true,
+    "backdropOpacity": 0.35,
+    "showBarButton": true,
+    "barButtonIcon": "⏻",
+    "visibleOn": [
+      "DP-1",
+      "HDMI-A-1"
+    ],
+    "commands": {
+      "poweroff": "systemctl poweroff",
+      "restart": "systemctl reboot",
+      "lock": "loginctl lock-session",
+      "suspend": "systemctl suspend",
+      "logout": "hyprctl dispatch exit"
+    }
+  },
+  "notificationsCenter": {
+    "pollIntervalMs": 400,
+    "realtime": true,
+    "popupDurationMs": 4500,
+    "popupLimit": 3,
+    "historyLimit": 100
+  },
+  "notificationsPopup": {
+    "enabled": true,
+    "width": 360,
+    "gap": 10,
+    "topMargin": 64,
+    "rightMargin": 18,
+    "visibleOn": [
+      "DP-1",
+      "HDMI-A-1"
+    ]
+  },
+  "notificationsHistory": {
+    "enabled": true,
+    "showBarButton": true,
+    "showCount": true,
+    "barButtonIcon": "󰂚",
+    "title": "Notification History",
+    "width": 420,
+    "height": 540,
+    "topMargin": 64,
+    "rightMargin": 18,
+    "backdropOpacity": 0.25,
+    "visibleOn": [
+      "DP-1",
+      "HDMI-A-1"
+    ]
+  },
   "widgets": {
     "dateTime": {
       "showSeconds": false,
@@ -53,7 +130,6 @@
       "showPill": true,
       "showCount": true,
       "hideWhenZero": true,
-      "intervalMs": 2000,
       "visibleOn": [
         "HDMI-A-1"
       ]
