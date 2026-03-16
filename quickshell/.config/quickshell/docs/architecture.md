@@ -1,25 +1,25 @@
 # Quickshell Architecture
 
-Last updated for the current repository state (bar + launcher + power menu + notifications).
+Last updated for the current repository state (bar + launcher + power menu + notifications, with service-backed bar widgets).
 
 ## 1) Architectural Summary
 
 This shell is organized as layered, modular QML:
 
 1. **Core utilities** (`core/`)
-   - path resolution
-   - lightweight logging
+   - path resolution (`Paths.qml`)
+   - lightweight logging (`Log.qml`)
 2. **Config + state** (`services/State.qml` + `config/*.jsonc`)
    - JSONC parsing + file watching
    - feature gating
-   - UI panel visibility/toggle state
+   - cross-window UI visibility state
 3. **Theme system** (`theme/`)
    - token + palette resolution
-   - global semantic style values
+   - semantic style surface (`GlobalStyle.qml`)
 4. **Runtime services** (`services/`)
-   - domain/system logic (launcher data, notifications, power actions, media, network, etc.)
+   - launcher, notifications, power actions, media, network, volume, weather, workspaces, updates
 5. **UI primitives** (`components/primitives/`)
-   - reusable low-level controls
+   - reusable low-level controls (button, pill, badge, separators, layout helpers, etc.)
 6. **Feature widgets** (`components/widgets/`)
    - service-connected UI building blocks
 7. **App windows** (`apps/*`)
@@ -52,20 +52,24 @@ quickshell/
 │   │   ├── PowerMenu.qml
 │   │   └── Styles.qml
 │   └── panels/
-│       └── SettingsPanel.qml            # placeholder
+│       └── SettingsPanel.qml            # reserved, not mounted in shell.qml
 ├── components/
 │   ├── primitives/
+│   │   ├── Badge.qml
+│   │   ├── Button.qml
 │   │   ├── Clickable.qml
 │   │   ├── Icon.qml
 │   │   ├── IconText.qml
 │   │   ├── Label.qml
+│   │   ├── MenuItem.qml
 │   │   ├── Pill.qml
-│   │   ├── SectionRow.qml
+│   │   ├── ProgressBar.qml
 │   │   ├── SectionColumn.qml
+│   │   ├── SectionRow.qml
 │   │   ├── Separator.qml
 │   │   ├── Spacer.qml
 │   │   ├── Surface.qml
-│   │   └── ... (some placeholders remain)
+│   │   └── Tooltip.qml
 │   └── widgets/
 │       ├── LauncherButton.qml
 │       ├── LauncherPanel.qml
@@ -75,7 +79,15 @@ quickshell/
 │       ├── NotificationPopupStack.qml
 │       ├── NotificationHistoryButton.qml
 │       ├── NotificationHistoryPanel.qml
-│       └── bar/system widgets (DateTime/Weather/Volume/Network/etc.)
+│       ├── DateTime.qml
+│       ├── Weather.qml
+│       ├── Volume.qml
+│       ├── NetStatus.qml
+│       ├── Media.qml
+│       ├── PacmanUpdates.qml
+│       ├── Workspaces.qml
+│       ├── WorkspaceDot.qml
+│       └── WindowTitle.qml
 ├── config/
 │   ├── defaults.jsonc
 │   ├── features.jsonc
@@ -108,6 +120,7 @@ quickshell/
 │   └── palettes/
 │       ├── earth.json
 │       └── mountain.json
+├── quickshell.conf
 └── shell.qml
 ```
 
@@ -131,7 +144,7 @@ For every detected screen:
 - `apps/notifications/Popups.qml`
 - `apps/notifications/History.qml`
 
-This is the basis for multi-monitor behavior and per-monitor `visibleOn` filtering.
+`apps/panels/SettingsPanel.qml` exists but is not currently instantiated from `shell.qml`.
 
 ---
 
@@ -160,7 +173,7 @@ This is the centralized state and config loader.
   - `config/keybinds.jsonc`
 - strips JSONC comments before parse
 - exposes `settings`, `features`, `keybinds`
-- derives feature-enabled flags
+- derives feature-enabled flags (`barEnabled`, `launcherEnabled`, `powermenuEnabled`, `notificationsEnabled`)
 - manages UI panel visibility/toggles:
   - launcher open/screen
   - power menu open/screen
@@ -230,7 +243,9 @@ Notification hub shared across bar and notification windows.
 
 ## Primitives (`components/primitives`)
 Reusable low-level controls for consistency:
-- `Clickable`, `Pill`, `Icon`, `IconText`, `Label`, layout helpers, etc.
+- `Button`, `Clickable`, `Pill`, `Badge`, `Icon`, `IconText`, `Label`
+- `MenuItem`, `ProgressBar`, `Tooltip`
+- layout/surface helpers (`SectionRow`, `SectionColumn`, `Separator`, `Spacer`, `Surface`)
 
 ## Widgets (`components/widgets`)
 Reusable feature-facing UI composed from primitives + services.
@@ -250,7 +265,9 @@ Reusable feature-facing UI composed from primitives + services.
 - `NotificationHistoryPanel.qml`
 
 ### Bar/system widgets
-- `DateTime`, `Weather`, `Volume`, `NetStatus`, `PacmanUpdates`, `Workspaces`, etc.
+- `DateTime`, `Weather`, `Volume`, `NetStatus`, `Media`, `PacmanUpdates`
+- `Workspaces` + `WorkspaceDot`
+- `WindowTitle`
 
 ---
 
@@ -258,9 +275,11 @@ Reusable feature-facing UI composed from primitives + services.
 
 ## `apps/bar`
 Persistent top panel shell with three sections:
-- left (`BarLeft`) for launcher/power/media/weather
-- center (`BarCenter`) for workspaces
+- left (`BarLeft`) for launcher/menu/media/weather
+- center (`BarCenter`) for workspace indicators and active window title
 - right (`BarRight`) for updates/notifications/network/volume/datetime
+
+`Bar.qml` dynamically expands total window height when dropdown content (e.g., forecast/calendar panels) is open.
 
 ## `apps/launcher`
 Full-screen transparent overlay with left-anchored app list/search panel.
@@ -295,8 +314,7 @@ Primary runtime defaults, including:
 - launcher behavior/layout
 - power menu behavior/actions
 - notifications center (poll interval/realtime/popup/history settings)
-- widget-level behavior (date/time/weather/volume/etc.)
-- workspace monitor mappings
+- widget-level behavior (date/time/weather/volume/network/media/updates/workspaces)
 
 ## `config/features.jsonc`
 Feature gates for high-level shell modules (bar, launcher, power menu, notifications, integrations).
@@ -342,4 +360,4 @@ The project follows a clear pattern:
 - **State + config stays centralized**
 - **Theme stays token/palette-driven**
 
-This keeps new feature development additive and modular while maintaining multi-monitor behavior and consistent styling.
+This keeps feature development additive and modular while maintaining multi-monitor behavior and consistent styling.
