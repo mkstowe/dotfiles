@@ -32,6 +32,13 @@ Item {
             screenObj: root.screenObj
         }
 
+        Widgets.ScreenshotMenuButton {
+            stateObj: root.stateObj
+            themeObj: root.themeObj
+            styleObj: root.styleObj
+            screenObj: root.screenObj
+        }
+
         Widgets.LauncherButton {
             stateObj: root.stateObj
             themeObj: root.themeObj

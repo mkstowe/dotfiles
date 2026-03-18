@@ -62,6 +62,30 @@
       "logout": "hyprctl dispatch exit"
     }
   },
+  "screenshotMenu": {
+    "enabled": true,
+    "panelWidth": 364,
+    "panelHeight": 96,
+    "bottomOffset": 24,
+    "buttonSize": 64,
+    "buttonGap": 16,
+    "iconSize": 26,
+    "backdropOpacity": 0.35,
+    "showBarButton": true,
+    "barButtonIcon": "󰹑",
+    "saveDirectory": "~/Pictures/screenshots",
+    "filePrefix": "screenshot",
+    "visibleOn": [
+      "DP-1",
+      "HDMI-A-1"
+    ],
+    "commands": {
+      "area": "",
+      "window": "",
+      "screen": "",
+      "allScreens": ""
+    }
+  },
   "notificationsCenter": {
     "pollIntervalMs": 400,
     "realtime": true,

@@ -18,6 +18,12 @@
       "action": { "type": "ui.toggle", "target": "powerMenu" }
     },
     {
+      "id": "toggle-screenshot-menu",
+      "description": "Toggle screenshot menu",
+      "combo": "SUPER+SHIFT+S",
+      "action": { "type": "ui.toggle", "target": "screenshotMenu" }
+    },
+    {
       "id": "toggle-notification-history",
       "description": "Toggle notification history",
       "combo": "SUPER+N",

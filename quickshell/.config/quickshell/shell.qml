@@ -1,6 +1,7 @@
 import "./apps/bar" as BarApp
 import "./apps/launcher" as LauncherApp
 import "./apps/powermenu" as PowerMenuApp
+import "./apps/screenshotmenu" as ScreenshotMenuApp
 import "./apps/notifications" as NotificationsApp
 import "./core" as Core
 import "./services" as Services
@@ -64,6 +65,18 @@ ShellRoot {
 
         delegate: Component {
             PowerMenuApp.PowerMenu {
+                modelData: modelData
+                stateObj: state
+                themeObj: theme
+            }
+        }
+    }
+
+    Variants {
+        model: Quickshell.screens
+
+        delegate: Component {
+            ScreenshotMenuApp.ScreenshotMenu {
                 modelData: modelData
                 stateObj: state
                 themeObj: theme
