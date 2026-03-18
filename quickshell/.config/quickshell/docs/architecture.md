@@ -1,6 +1,6 @@
 # Quickshell Architecture
 
-Last updated for the current repository state (bar + launcher + power menu + notifications, with service-backed bar widgets).
+Last updated for the current repository state (bar + launcher + power menu + screenshot menu + notifications, with service-backed bar widgets).
 
 ## 1) Architectural Summary
 
@@ -17,7 +17,7 @@ This shell is organized as layered, modular QML:
    - token + palette resolution
    - semantic style surface (`GlobalStyle.qml`)
 4. **Runtime services** (`services/`)
-   - launcher, notifications, power actions, media, network, volume, weather, workspaces, updates
+   - launcher, notifications, power actions, screenshot actions, media, network, volume, weather, workspaces, updates
 5. **UI primitives** (`components/primitives/`)
    - reusable low-level controls (button, pill, badge, separators, layout helpers, etc.)
 6. **Feature widgets** (`components/widgets/`)
@@ -51,6 +51,9 @@ quickshell/
 │   ├── powermenu/
 │   │   ├── PowerMenu.qml
 │   │   └── Styles.qml
+│   ├── screenshotmenu/
+│   │   ├── ScreenshotMenu.qml
+│   │   └── Styles.qml
 │   └── panels/
 │       └── SettingsPanel.qml            # reserved, not mounted in shell.qml
 ├── components/
@@ -75,6 +78,8 @@ quickshell/
 │       ├── LauncherPanel.qml
 │       ├── PowerMenuButton.qml
 │       ├── PowerMenuPanel.qml
+│       ├── ScreenshotMenuButton.qml
+│       ├── ScreenshotMenuPanel.qml
 │       ├── Notifications.qml
 │       ├── NotificationPopupStack.qml
 │       ├── NotificationHistoryButton.qml
@@ -105,6 +110,7 @@ quickshell/
 │   ├── State.qml
 │   ├── Launcher.qml
 │   ├── PowerMenu.qml
+│   ├── ScreenshotMenu.qml
 │   ├── Notifications.qml
 │   ├── DateTime.qml
 │   ├── Weather.qml
@@ -141,6 +147,7 @@ For every detected screen:
 - `apps/bar/Bar.qml`
 - `apps/launcher/Launcher.qml`
 - `apps/powermenu/PowerMenu.qml`
+- `apps/screenshotmenu/ScreenshotMenu.qml`
 - `apps/notifications/Popups.qml`
 - `apps/notifications/History.qml`
 
@@ -173,10 +180,11 @@ This is the centralized state and config loader.
   - `config/keybinds.jsonc`
 - strips JSONC comments before parse
 - exposes `settings`, `features`, `keybinds`
-- derives feature-enabled flags (`barEnabled`, `launcherEnabled`, `powermenuEnabled`, `notificationsEnabled`)
+- derives feature-enabled flags (`barEnabled`, `launcherEnabled`, `powerMenuEnabled`, `screenshotMenuEnabled`, `notificationsHistoryEnabled`)
 - manages UI panel visibility/toggles:
   - launcher open/screen
   - power menu open/screen
+  - screenshot menu open/screen
   - notification history open/screen
 - coordinates panel exclusivity in open/toggle helpers
 
@@ -202,6 +210,7 @@ Semantic style mapping (spacing scale, radii, panel/control colors, text colors,
 - `apps/bar/Styles.qml`
 - `apps/launcher/Styles.qml`
 - `apps/powermenu/Styles.qml`
+- `apps/screenshotmenu/Styles.qml`
 - `apps/notifications/Styles.qml`
 
 These keep app-level visual semantics readable while inheriting global theme rules.
@@ -220,6 +229,11 @@ These keep app-level visual semantics readable while inheriting global theme rul
 - defines power action model
 - resolves configured commands
 - executes chosen action
+
+## `services/ScreenshotMenu.qml`
+- defines screenshot action model (area, active window, current screen, all screens)
+- resolves configured `grimblast` commands or delegates default captures to `scripts/screenshot_capture.sh`, which expands `~`/`$HOME` before invoking `grimblast`
+- executes screenshot capture immediately without confirmation
 
 ## `services/Notifications.qml`
 Notification hub shared across bar and notification windows.
@@ -258,6 +272,10 @@ Reusable feature-facing UI composed from primitives + services.
 - `PowerMenuButton.qml`
 - `PowerMenuPanel.qml`
 
+### Screenshot widgets
+- `ScreenshotMenuButton.qml`
+- `ScreenshotMenuPanel.qml`
+
 ### Notifications widgets
 - `Notifications.qml` (count/icon widget)
 - `NotificationPopupStack.qml`
@@ -286,6 +304,9 @@ Full-screen transparent overlay with left-anchored app list/search panel.
 
 ## `apps/powermenu`
 Bottom-center compact overlay with icon actions + confirmation flow.
+
+## `apps/screenshotmenu`
+Bottom-center compact overlay with immediate grimblast actions for area, active window, current screen, and all screens, saving captures into the user's real `~/Pictures/screenshots` directory by default via the helper capture script.
 
 ## `apps/notifications`
 - `Popups.qml`: transient top-right notification cards
