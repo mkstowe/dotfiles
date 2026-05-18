@@ -47,7 +47,6 @@ source ${ZIM_HOME}/init.zsh
 # User environment
 # ----------------
 
-# Keep personal customizations in zshrc (zimrc is for modules)
 for dir in aliases functions; do
   d="$HOME/.config/zsh/$dir"
   [[ -d $d ]] || continue
@@ -64,6 +63,8 @@ export PROJECT_HOME="$HOME/projects"
 export EDITOR="nvim"
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 export PATH="/usr/lib/qt6/bin:$PATH"
+
+[ -f ~/.config/secrets.env ] && source ~/.config/secrets.env
 
 # -------------------------
 # Shell options / behavior
@@ -85,3 +86,21 @@ setopt glob_dots
 # thefuck (only if installed)
 (( $+commands[thefuck] )) && eval "$(thefuck --alias)"
 
+
+# pnpm
+export PNPM_HOME="/home/mkstowe/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# fnm
+FNM_PATH="/home/mkstowe/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
+eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive)"

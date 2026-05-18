@@ -102,3 +102,23 @@ compdef _trash trash
 
 
 alias del='trash'
+
+killport() {
+  local port="$1"
+
+  if [[ -z "$port" ]]; then
+    echo "Usage: killport <port>"
+    return 1
+  fi
+
+  local pids
+  pids=$(lsof -t -i :"$port")
+
+  if [[ -z "$pids" ]]; then
+    echo "No process found on port $port"
+    return 0
+  fi
+
+  echo "Killing process(es) on port $port: $pids"
+  kill $pids
+}
