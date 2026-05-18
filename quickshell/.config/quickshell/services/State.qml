@@ -46,12 +46,15 @@ Item {
     readonly property bool barEnabled: (features?.bar ?? true) && (settings?.bar?.enabled ?? true)
     readonly property bool launcherEnabled: (features?.launcher ?? true) && (settings?.launcher?.enabled ?? true)
     readonly property bool powerMenuEnabled: (features?.powerMenu ?? true) && (settings?.powerMenu?.enabled ?? true)
+    readonly property bool screenshotMenuEnabled: (features?.screenshotMenu ?? true) && (settings?.screenshotMenu?.enabled ?? true)
     readonly property bool notificationsHistoryEnabled: (features?.notifications ?? true) && (settings?.notificationsHistory?.enabled ?? true)
 
     property bool launcherVisible: false
     property string launcherScreen: ""
     property bool powerMenuVisible: false
     property string powerMenuScreen: ""
+    property bool screenshotMenuVisible: false
+    property string screenshotMenuScreen: ""
     property bool notificationHistoryVisible: false
     property string notificationHistoryScreen: ""
 
@@ -59,6 +62,7 @@ Item {
 
     function openLauncherFor(screenName) {
         closePowerMenu()
+        closeScreenshotMenu()
         closeNotificationHistory()
         launcherScreen = screenName || ""
         launcherVisible = true
@@ -70,6 +74,7 @@ Item {
 
     function openPowerMenuFor(screenName) {
         closeLauncher()
+        closeScreenshotMenu()
         closeNotificationHistory()
         powerMenuScreen = screenName || ""
         powerMenuVisible = true
@@ -79,9 +84,22 @@ Item {
         powerMenuVisible = false
     }
 
+    function openScreenshotMenuFor(screenName) {
+        closeLauncher()
+        closePowerMenu()
+        closeNotificationHistory()
+        screenshotMenuScreen = screenName || ""
+        screenshotMenuVisible = true
+    }
+
+    function closeScreenshotMenu() {
+        screenshotMenuVisible = false
+    }
+
     function openNotificationHistoryFor(screenName) {
         closeLauncher()
         closePowerMenu()
+        closeScreenshotMenu()
         notificationHistoryScreen = screenName || ""
         notificationHistoryVisible = true
     }
@@ -104,6 +122,14 @@ Item {
             closePowerMenu()
         else
             openPowerMenuFor(normalized)
+    }
+
+    function toggleScreenshotMenu(screenName) {
+        const normalized = screenName || ""
+        if (screenshotMenuVisible && screenshotMenuScreen === normalized)
+            closeScreenshotMenu()
+        else
+            openScreenshotMenuFor(normalized)
     }
 
     function toggleNotificationHistory(screenName) {
@@ -129,6 +155,11 @@ Item {
     onPowerMenuEnabledChanged: {
         if (!powerMenuEnabled)
             closePowerMenu()
+    }
+
+    onScreenshotMenuEnabledChanged: {
+        if (!screenshotMenuEnabled)
+            closeScreenshotMenu()
     }
 
     onNotificationsHistoryEnabledChanged: {
