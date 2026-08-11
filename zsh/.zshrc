@@ -87,20 +87,25 @@ setopt glob_dots
 (( $+commands[thefuck] )) && eval "$(thefuck --alias)"
 
 
+# fnm
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+fi
+
 # pnpm
-export PNPM_HOME="/home/mkstowe/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-
-# fnm
-FNM_PATH="/home/mkstowe/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
-fi
-
 eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive)"
+
+# Created by `pipx` on 2026-06-18 21:06:47
+export PATH="$PATH:/home/mkstowe/.local/bin"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

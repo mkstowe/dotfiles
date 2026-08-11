@@ -1,7 +1,12 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 
--- bootstrap lazy and all plugins
+local cargo_bin = vim.fn.expand "$HOME/.cargo/bin"
+if vim.fn.executable(cargo_bin .. "/tree-sitter") == 1 then
+  vim.env.PATH = cargo_bin .. ":" .. vim.env.PATH
+end
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -11,9 +16,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "configs.lazy"
-
--- load plugins
 require("lazy").setup({
   {
     "NvChad/NvChad",
@@ -23,18 +25,16 @@ require("lazy").setup({
   },
 
   { import = "plugins" },
-}, lazy_config)
+}, require "config.lazy")
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "options"
-require "autocmds"
+require "config.options"
+require "config.autocmds"
 require "nvchad.autocmds"
 
 vim.schedule(function()
-  require "mappings"
-  require "configs.wk-definitions"
+  require "config.keymaps"
 end)
-

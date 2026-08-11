@@ -64,8 +64,12 @@ alias stowe='stow'
 alias calc='qalc'
 
 alias rm='echo "use del instead"'
-alias roll='/home/mkstowe/bin/rolldice.sh'
-alias rolldice='/home/mkstowe/bin/rolldice.sh'
+alias roll="$HOME/bin/rolldice.sh"
+alias rolldice="$HOME/bin/rolldice.sh"
 
 alias cd..='cd ..'
 alias S='sudo !!'
+
+alias browser='zen-browser'
+
+alias hassh='TERM=xterm ssh homeassistant'

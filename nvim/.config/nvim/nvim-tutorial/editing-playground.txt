@@ -1,0 +1,24 @@
+NEEDLE WRAPPED-LINE TEST: This is intentionally a very long line so that when the window is narrow it wraps across multiple screen rows and lets you see whether j and k move through display lines rather than immediately jumping to the next physical buffer line.
+
+Paragraph two starts here.
+It has a second physical line.
+It has a third physical line with NEEDLE.
+
+Paragraph three starts here so Ctrl-J and Ctrl-K have obvious destinations.
+Try moving this line up and down.
+Try moving this line up and down too.
+
+INDENT ME ONE
+INDENT ME TWO
+INDENT ME THREE
+
+macro item one
+macro item two
+macro item three
+macro item four
+
+DISPOSABLE CUT TEST A
+DISPOSABLE CUT TEST B
+DISPOSABLE CUT TEST C
+
+NEEDLE final occurrence

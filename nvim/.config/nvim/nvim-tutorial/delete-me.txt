@@ -1,0 +1,2 @@
+This file exists only to test <leader>fd.
+Type y or yes when prompted if you want the mapping to delete it from disk.

@@ -1,0 +1,14 @@
+Leap targets: alpha beta gamma delta epsilon zeta eta theta iota kappa lambda.
+More targets: aardvark balloon cascade database element factory galaxy harbor.
+
+Spider identifiers:
+HTTPServer response_code someMixedCase XML2Parser foo.bar/baz first-second third_fourth
+getHTTPResponse parse_json_value selectedUserID CSSVariableName v2Endpoint
+
+Remote-operation targets:
+COPYME apple COPYME banana COPYME cherry COPYME date COPYME elderberry
+paste-local-here: ________________
+
+Operator motion practice:
+DeleteFromHere to-there safely without walking character by character.
+ChangeThisIdentifierPart and then move backward across snake_case_parts.
