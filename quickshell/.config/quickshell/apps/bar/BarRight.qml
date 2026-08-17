@@ -56,6 +56,13 @@ Item {
             screenObj: root.screenObj
         }
 
+        Widgets.TailscaleStatus {
+            stateObj: root.stateObj
+            themeObj: root.themeObj
+            styleObj: root.styleObj
+            screenObj: root.screenObj
+        }
+
         Widgets.Volume {
             stateObj: root.stateObj
             themeObj: root.themeObj

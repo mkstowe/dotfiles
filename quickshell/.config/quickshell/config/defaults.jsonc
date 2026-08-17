@@ -165,6 +165,19 @@
         "HDMI-A-1"
       ]
     },
+    "tailscale": {
+      "enabled": true,
+      "showPill": true,
+      "showStatus": false,
+      "pollInterval": 5000,
+      "visibleOn": [
+        "HDMI-A-1"
+      ],
+      "commands": {
+        "up": "tailscale up",
+        "down": "tailscale down"
+      }
+    },
     "weather": {
       "showText": true,
       "showPill": true,
