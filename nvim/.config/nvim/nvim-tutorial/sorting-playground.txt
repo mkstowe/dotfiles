@@ -1,9 +1,0 @@
-zebra
-apple
-Mango
-banana
-cherry
-
-3,1,9,2,7,5
-pear,apple,orange,banana,grape
-kappa alpha delta beta gamma

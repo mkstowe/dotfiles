@@ -1,8 +1,0 @@
-ALPHA is repeated here.
-ALPHA is repeated again.
-This line contains BETA but no target word.
-ALPHA appears beside ALPHA on the same line.
-alpha lowercase is intentionally different.
-
-Try replacing ALPHA with OMEGA.
-Then undo with Ctrl-Z and redo with Ctrl-Shift-Z or U.

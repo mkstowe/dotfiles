@@ -16,6 +16,15 @@ return {
     opts = require "config.plugins.treesitter",
   },
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config = require "config.plugins.treesitter-textobjects"
+  },
+  {
     "windwp/nvim-ts-autotag",
     ft = { "html" },
     opts = {},
